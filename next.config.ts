@@ -1,0 +1,37 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  transpilePackages: ['gsap'],
+  reactStrictMode: true,
+  allowedDevOrigins: ['10.0.0.30', '10.0.0.30:3000', 'localhost:3000'],
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/events',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/inquiry-form',
+        destination: '/inquiry',
+        permanent: true,
+      },
+      {
+        source: '/quote',
+        destination: '/inquiry',
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
