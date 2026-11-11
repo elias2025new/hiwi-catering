@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MapPin, Phone, Send, Mail } from 'lucide-react';
+import { MapPin, Phone, Send, ExternalLink } from 'lucide-react';
 import { ADDIS_ABABA_LOCATIONS } from '@/data/services';
 
 export default function Footer() {
@@ -21,24 +21,34 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* 4 Multi-Column Grid - Exactly matching Johnny Burke structure */}
+        {/* 4 Multi-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10 text-xs">
           
-          {/* Column 1: Service Area */}
+          {/* Column 1: Service Area (Hyperlocal Links) */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
               Service Area
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-400">
               {ADDIS_ABABA_LOCATIONS.map((loc) => (
-                <span key={loc.name} className="hover:text-white transition-colors">
+                <Link
+                  key={loc.name}
+                  href={loc.href || '/locations'}
+                  className="hover:text-white transition-colors"
+                >
                   {loc.name}
-                </span>
+                </Link>
               ))}
             </div>
+            <Link
+              href="/locations"
+              className="inline-block text-[11px] font-bold uppercase tracking-wider text-hiwi-gold hover:text-white transition-colors pt-1"
+            >
+              All Delivery Areas &rarr;
+            </Link>
           </div>
 
-          {/* Column 2: Navigation Links (Strictly Home, Contact, About, Events) */}
+          {/* Column 2: Navigation Links */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
               Links
@@ -50,13 +60,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  About
+                <Link href="/services" className="hover:text-white transition-colors">
+                  Events &amp; Services
                 </Link>
               </li>
               <li>
@@ -65,29 +70,34 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/inquiry" className="hover:text-white transition-colors">
-                  Event Inquiry
+                <Link href="/locations" className="hover:text-white transition-colors">
+                  Delivery Areas
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  Events
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
+          {/* Column 3: Verified Contact & Exact Pin */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
               Contact
             </h4>
-            <div className="space-y-2.5 text-gray-400 leading-relaxed">
+            <div className="space-y-3 text-gray-400 leading-relaxed">
               <p className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
                 <span>
-                  Summit Fiyel Bet Area,<br />
-                  Addis Ababa, Ethiopia
+                  Summit Fiyel Bet Area (XVW2+PCH),<br />
+                  Addis Ababa (Addis Abeba), Ethiopia
                 </span>
               </p>
               <p className="flex items-center gap-2">
@@ -108,16 +118,23 @@ export default function Footer() {
                 </a>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-white shrink-0" />
-                <span>catering@hiwicatering.com</span>
+                <ExternalLink className="w-3.5 h-3.5 text-hiwi-gold shrink-0" />
+                <a
+                  href="https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-hiwi-gold hover:text-white transition-colors font-semibold"
+                >
+                  View Exact Google Maps Pin
+                </a>
               </p>
             </div>
           </div>
 
-          {/* Column 4: Check us on (Social Links) */}
+          {/* Column 4: Verified Direct Booking & Guides */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
-              Check Us On
+              Book &amp; Guides
             </h4>
             <ul className="space-y-2.5 text-gray-400 uppercase tracking-wider font-medium">
               <li>
@@ -131,34 +148,24 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Facebook
-                </a>
+                <Link href="/inquiry" className="hover:text-white transition-colors">
+                  Event Inquiry Form
+                </Link>
               </li>
               <li>
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Instagram
-                </a>
+                <Link href="/locations/bole" className="hover:text-white transition-colors">
+                  Bole Catering Guide
+                </Link>
               </li>
               <li>
-                <a 
-                  href="https://tiktok.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  TikTok
-                </a>
+                <Link href="/locations/ayat" className="hover:text-white transition-colors">
+                  Ayat Catering Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/faqs" className="hover:text-white transition-colors">
+                  Catering FAQs
+                </Link>
               </li>
             </ul>
           </div>
@@ -168,14 +175,14 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Legal */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500 uppercase tracking-wider">
           <div>
-            &copy; {new Date().getFullYear()} HIWI CATERING &amp; EVENTS. ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} HIWI CATERING &amp; EVENTS. ADDIS ABABA, ETHIOPIA.
           </div>
           <div className="flex gap-4">
-            <Link href="/about" className="hover:text-gray-300 transition-colors">
+            <Link href="/privacy" className="hover:text-gray-300 transition-colors">
               PRIVACY POLICY
             </Link>
             <span>|</span>
-            <Link href="/about" className="hover:text-gray-300 transition-colors">
+            <Link href="/terms" className="hover:text-gray-300 transition-colors">
               TERMS OF USE
             </Link>
           </div>

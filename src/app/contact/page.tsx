@@ -5,11 +5,10 @@ import {
   MapPin, 
   Phone, 
   Send, 
-  Clock, 
   ChevronRight, 
   Building2,
-  CheckCircle2,
-  PhoneCall
+  PhoneCall,
+  ExternalLink
 } from 'lucide-react';
 import { ADDIS_ABABA_LOCATIONS } from '@/data/services';
 import InquiryForm from '@/components/InquiryForm';
@@ -85,9 +84,15 @@ export default function ContactPage() {
       '@id': 'https://hiwicatering.com/#business',
       name: 'Hiwi Catering Services',
       telephone: '+251963138123',
+      hasMap: 'https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6',
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 8.996818,
+        longitude: 38.851122
+      },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Summit Fiyel Bet Area',
+        streetAddress: 'Summit Fiyel Bet Area (Plus Code XVW2+PCH)',
         addressLocality: 'Addis Ababa',
         addressCountry: 'ET'
       }
@@ -128,7 +133,7 @@ export default function ContactPage() {
           </h1>
           <div className="w-12 h-0.5 bg-black mx-auto my-4" />
           <p className="text-xs sm:text-base text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
-            Based in <strong>Summit Fiyel Bet</strong>, serving weddings, celebrations, and corporate banquets across every sub-city of Addis Ababa. Call us, message on Telegram, or submit your event details below.
+            Based in <strong>Summit Fiyel Bet (Plus Code XVW2+PCH)</strong>, serving weddings, celebrations, and corporate banquets across Bole, Ayat, CMC, and every sub-city of Addis Ababa (Addis Abeba). Call us, message on Telegram, or submit your event details below.
           </p>
         </div>
 
@@ -201,10 +206,13 @@ export default function ContactPage() {
               <div className="space-y-3.5 text-xs text-gray-600 font-light leading-relaxed">
                 <div>
                   <strong className="text-black font-bold uppercase tracking-wider block text-[11px] mb-0.5">
-                    Physical Address:
+                    Physical Address &amp; Coordinates:
                   </strong>
                   <span>
-                    Summit, Fiyel Bet Area (near CMC &amp; Summit Safari corridor), Addis Ababa, Ethiopia
+                    Summit, Fiyel Bet Area (Plus Code XVW2+PCH, near CMC &amp; Summit Safari corridor), Addis Ababa, Ethiopia
+                  </span>
+                  <span className="block text-[11px] font-mono text-gray-500 mt-1">
+                    GPS: 8.996818, 38.851122
                   </span>
                 </div>
 
@@ -225,8 +233,20 @@ export default function ContactPage() {
                     Kitchen Dispatch:
                   </strong>
                   <span>
-                    Centrally positioned for rapid transport of hot bain-marie chafing dish warmers, fresh injera platters, and service crews across Addis Ababa.
+                    Rapid express dispatch to Ayat (10–15 mins), Summit &amp; CMC (5–12 mins), and Bole Sub-City (15–25 mins) across Addis Ababa &amp; Addis Abeba.
                   </span>
+                </div>
+
+                <div className="pt-1">
+                  <a
+                    href="https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 px-4 bg-black text-white hover:bg-gray-800 text-[11px] font-bold uppercase tracking-[0.15em] text-center transition-colors flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open Exact Pin on Google Maps</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -244,12 +264,22 @@ export default function ContactPage() {
               </p>
               <div className="grid grid-cols-2 gap-2 text-xs text-gray-700 pt-1">
                 {ADDIS_ABABA_LOCATIONS.map((loc) => (
-                  <div key={loc.name} className="flex items-center gap-1.5 py-0.5">
+                  <Link
+                    key={loc.name}
+                    href={loc.href || '/locations'}
+                    className="flex items-center gap-1.5 py-0.5 hover:text-hiwi-primary transition-colors"
+                  >
                     <span className="w-1.5 h-1.5 bg-black rounded-full shrink-0" />
-                    <span className="font-medium truncate">{loc.name}</span>
-                  </div>
+                    <span className="font-medium truncate underline-offset-2 hover:underline">{loc.name}</span>
+                  </Link>
                 ))}
               </div>
+              <Link
+                href="/locations"
+                className="inline-block text-[11px] font-bold uppercase tracking-wider text-hiwi-primary hover:underline pt-1"
+              >
+                Explore All Addis Ababa Delivery Guides &rarr;
+              </Link>
             </div>
 
           </div>

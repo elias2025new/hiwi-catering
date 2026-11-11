@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import FaqAccordion from '@/components/FaqAccordion';
 import InquiryForm from '@/components/InquiryForm';
+import ServiceDeliveryStrip from '@/components/ServiceDeliveryStrip';
+import { HIWI_SCHEMA_PROVIDER, HIWI_SCHEMA_AREA_SERVED } from '@/data/services';
 
 export const metadata: Metadata = {
   title: {
@@ -82,32 +84,12 @@ export default function BirthdayCateringPage() {
     name: 'Birthday Catering Services in Addis Ababa',
     serviceType: 'Birthday Party and Family Celebration Catering',
     url: 'https://hiwicatering.com/services/birthday-catering',
-    provider: {
-      '@type': 'FoodEstablishment',
-      '@id': 'https://hiwicatering.com/#business',
-      name: 'Hiwi Catering Services',
-      telephone: '+251963138123',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Summit Fiyel Bet Area',
-        addressLocality: 'Addis Ababa',
-        addressCountry: 'ET'
-      }
-    },
-    areaServed: [
-      'Summit Fiyel Bet',
-      'Bole',
-      'CMC',
-      'Kazanchis',
-      'Sarbet',
-      'Ayat',
-      'Megenagna',
-      'Addis Ababa'
-    ],
-    description: 'Full-service birthday party catering in Addis Ababa with custom kids menus, adult traditional banquets, and chafing dish buffets.',
+    provider: HIWI_SCHEMA_PROVIDER,
+    areaServed: HIWI_SCHEMA_AREA_SERVED,
+    description: 'Full-service birthday party catering in Addis Ababa and Addis Abeba with custom kids menus, adult traditional banquets, and chafing dish buffets.',
     offers: {
       '@type': 'Offer',
-      price: '650',
+      price: '750',
       priceCurrency: 'ETB',
       availability: 'https://schema.org/InStock'
     }
@@ -274,11 +256,14 @@ export default function BirthdayCateringPage() {
               HOW DOES BIRTHDAY CATERING WORK WITH HIWI CATERING IN ADDIS ABABA?
             </h2>
             <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-              When booking a <strong>catering service for birthday</strong> celebrations in Addis Ababa, hosts look for delicious variety, on-time delivery, and hassle-free setup. <strong>Hiwi Catering Services</strong>, based in Summit Fiyel Bet, provides end-to-end birthday food preparation. We arrive 1 hour before party time with stainless steel bain-marie warmers, set up your buffet table with fresh injera rolls, wats, seasoned rice, finger foods, and salads, and provide buffet replenishment. Packages start from 650 ETB to 750 ETB per guest with zero stress.
+              When booking a <strong>catering service for birthday</strong> celebrations in Addis Ababa &amp; Addis Abeba, hosts look for delicious variety, on-time delivery, and hassle-free setup. <strong>Hiwi Catering Services</strong>, based in Summit Fiyel Bet, provides end-to-end birthday food preparation. We arrive 1 hour before party time with stainless steel bain-marie warmers, set up your buffet table with fresh injera rolls, wats, seasoned rice, finger foods, and salads, and provide buffet replenishment. Packages start at 750 ETB per guest with zero stress.
             </p>
           </div>
         </div>
       </section>
+
+      {/* Local Delivery Links */}
+      <ServiceDeliveryStrip serviceLabel="Birthday Catering" />
 
       {/* Direct Inquiry for Birthdays */}
       <section className="py-16 sm:py-20 bg-white">

@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import FaqAccordion from '@/components/FaqAccordion';
 import InquiryForm from '@/components/InquiryForm';
+import ServiceDeliveryStrip from '@/components/ServiceDeliveryStrip';
+import { HIWI_SCHEMA_PROVIDER, HIWI_SCHEMA_AREA_SERVED } from '@/data/services';
 
 export const metadata: Metadata = {
   title: {
@@ -85,29 +87,9 @@ export default function WeddingCateringPage() {
     name: 'Wedding Catering Services in Addis Ababa',
     serviceType: 'Wedding and Melse Banquet Catering',
     url: 'https://hiwicatering.com/services/wedding-catering',
-    provider: {
-      '@type': 'FoodEstablishment',
-      '@id': 'https://hiwicatering.com/#business',
-      name: 'Hiwi Catering Services',
-      telephone: '+251963138123',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Summit Fiyel Bet Area',
-        addressLocality: 'Addis Ababa',
-        addressCountry: 'ET'
-      }
-    },
-    areaServed: [
-      'Summit Fiyel Bet',
-      'Bole',
-      'CMC',
-      'Kazanchis',
-      'Sarbet',
-      'Ayat',
-      'Megenagna',
-      'Addis Ababa'
-    ],
-    description: 'Full-service wedding and Melse catering in Addis Ababa with traditional Agelgil presentation, stainless steel chafing dish buffets, and professional staff.',
+    provider: HIWI_SCHEMA_PROVIDER,
+    areaServed: HIWI_SCHEMA_AREA_SERVED,
+    description: 'Full-service wedding and Melse catering in Addis Ababa and Addis Abeba with traditional Agelgil presentation, stainless steel chafing dish buffets, and professional staff.',
     offers: {
       '@type': 'Offer',
       price: '1650',
@@ -362,6 +344,9 @@ export default function WeddingCateringPage() {
           </div>
         </div>
       </section>
+
+      {/* Local Delivery Links */}
+      <ServiceDeliveryStrip serviceLabel="Wedding Catering" />
 
       {/* Direct Inquiry for Weddings */}
       <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-200">

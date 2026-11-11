@@ -25,12 +25,18 @@ import InquiryForm from '@/components/InquiryForm';
 import FaqAccordion from '@/components/FaqAccordion';
 
 export const metadata: Metadata = {
-  title: 'Catering Packages & Pricing Addis Ababa | Hiwi Catering Services',
-  description: 'Explore transparent per-person catering prices in Addis Ababa. Packages starting from 750 ETB/person for birthdays, graduations, and luxury weddings. Fresh Habesha banquets, stainless chafing warmers & professional staff across all sub-cities.',
+  title: {
+    absolute: 'Catering Prices & Packages Addis Ababa | Hiwi Catering',
+  },
+  description: 'Transparent per-person catering prices in Addis Ababa & Abeba starting at 750 ETB. Hot Habesha feasts & buffets across Bole, Ayat & Summit. Call 0963 138 123.',
+  alternates: {
+    canonical: 'https://hiwicatering.com/pricing',
+  },
   keywords: [
     'catering prices Addis Ababa',
     'catering cost per person Addis Ababa',
     'catering packages Addis Ababa',
+    'catering in addis abeba',
     'wedding catering prices Addis Ababa',
     'birthday catering prices Ethiopia',
     'Habesha catering menu prices',
@@ -39,9 +45,18 @@ export const metadata: Metadata = {
     'የሰርግ ምግብ ዋጋ አዲስ አበባ'
   ],
   openGraph: {
-    title: 'Catering Packages & Pricing in Addis Ababa | Hiwi Catering',
-    description: 'Honest, transparent catering rates from 750 ETB/guest. Authentic Habesha feasts, hot stainless buffet stations, and dedicated service staff across Addis Ababa.',
+    title: 'Catering Prices & Packages Addis Ababa | Hiwi Catering',
+    description: 'Honest, transparent catering rates from 750 ETB/guest across Bole, Ayat, Summit & Addis Ababa.',
     url: 'https://hiwicatering.com/pricing',
+    siteName: 'Hiwi Catering Services',
+    locale: 'en_US',
+    type: 'website',
+    images: ['/images/corporate-catering.jpg']
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Catering Prices & Packages Addis Ababa | Hiwi Catering',
+    description: 'Per-person catering packages starting at 750 ETB across Addis Ababa & Addis Abeba.',
     images: ['/images/corporate-catering.jpg']
   }
 };
@@ -182,15 +197,38 @@ export default function PricingPage() {
         name: pkg.name,
         provider: {
           '@type': 'FoodEstablishment',
+          '@id': 'https://hiwicatering.com/#business',
           name: 'Hiwi Catering Services',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Summit Fiyel Bet Area',
+            streetAddress: 'Summit Fiyel Bet Area (Plus Code XVW2+PCH)',
             addressLocality: 'Addis Ababa',
             addressCountry: 'ET'
           }
         }
       }
+    }))
+  };
+
+  const menuSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Menu',
+    name: 'Hiwi Catering Buffet & Banquet Menu (Addis Ababa & Addis Abeba)',
+    url: 'https://hiwicatering.com/pricing',
+    inLanguage: ['en', 'am'],
+    hasMenuSection: CATERING_PACKAGES.map((pkg) => ({
+      '@type': 'MenuSection',
+      name: `${pkg.name} (${pkg.pricePerPerson} ETB/person)`,
+      description: pkg.description,
+      hasMenuItem: pkg.dishes.map((dish) => ({
+        '@type': 'MenuItem',
+        name: dish,
+        offers: {
+          '@type': 'Offer',
+          price: pkg.pricePerPerson,
+          priceCurrency: 'ETB'
+        }
+      }))
     }))
   };
 
@@ -203,6 +241,10 @@ export default function PricingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuSchema) }}
       />
 
       {/* Breadcrumb Navigation */}

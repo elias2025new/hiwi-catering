@@ -5,19 +5,34 @@ import { ChevronRight, Phone, Send, MapPin, ShieldCheck, Sparkles } from 'lucide
 import InquiryForm from '@/components/InquiryForm';
 
 export const metadata: Metadata = {
-  title: 'Direct Event Catering Inquiry | Hiwi Catering Addis Ababa',
-  description: 'Book your event catering consultation with Hiwi Catering in Addis Ababa. Quick inquiry form for weddings, birthdays, graduations, and corporate banquets.',
+  title: {
+    absolute: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
+  },
+  description: 'Request a custom catering quote in Addis Ababa & Addis Abeba. Weddings, birthdays, graduations & corporate events in Bole, Ayat & Summit. Call 0963 138 123.',
+  alternates: {
+    canonical: 'https://hiwicatering.com/inquiry',
+  },
   keywords: [
     'catering inquiry Addis Ababa',
     'book catering Addis Ababa',
+    'catering in addis abeba',
     'wedding catering booking Ethiopia',
     'catering quote Addis Ababa',
     'Hiwi Catering inquiry form'
   ],
   openGraph: {
-    title: 'Event Catering Inquiry & Consultation | Hiwi Catering Addis Ababa',
-    description: 'Get in touch for your upcoming event in Addis Ababa. We respond within 24 hours with custom menu options.',
+    title: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
+    description: 'Get in touch for your upcoming event in Addis Ababa & Addis Abeba. We respond within 24 hours with custom menu options.',
     url: 'https://hiwicatering.com/inquiry',
+    siteName: 'Hiwi Catering Services',
+    locale: 'en_US',
+    type: 'website',
+    images: ['/images/contact-bg.jpg']
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
+    description: 'Submit your event catering request for weddings, birthdays & corporate banquets in Addis Ababa.',
     images: ['/images/contact-bg.jpg']
   }
 };
@@ -75,7 +90,18 @@ export default function InquiryPage() {
 
         {/* Content Container */}
         <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col justify-center">
-          
+          <div className="text-center mb-4 sm:mb-6 space-y-1.5">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-hiwi-gold block">
+              Addis Ababa &amp; Addis Abeba • Packages From 750 ETB/Guest
+            </span>
+            <h1 className="text-xl sm:text-3xl font-black uppercase tracking-[0.12em] text-white leading-tight drop-shadow">
+              REQUEST YOUR EVENT CATERING QUOTE
+            </h1>
+            <p className="text-[11px] sm:text-xs text-gray-200 font-light max-w-md mx-auto">
+              Hot Habesha buffets &amp; setups dispatched from Summit Fiyel Bet across Bole, Ayat, CMC, and all 11 sub-cities.
+            </p>
+          </div>
+
           {/* Elevated Johnny Burke Inquiry Card */}
           <InquiryForm 
             title="READY TO MAKE YOUR NEXT EVENT PERFECT?"
@@ -106,6 +132,14 @@ export default function InquiryPage() {
               <Send className="w-3 h-3 text-hiwi-gold" />
               <span>@hiwicatering</span>
             </a>
+            <span className="text-white/40">•</span>
+            <Link href="/pricing" className="hover:text-hiwi-gold transition-colors underline underline-offset-2">
+              750+ ETB Prices
+            </Link>
+            <span className="text-white/40">•</span>
+            <Link href="/locations" className="hover:text-hiwi-gold transition-colors underline underline-offset-2">
+              Bole &amp; Ayat Areas
+            </Link>
           </div>
 
         </div>

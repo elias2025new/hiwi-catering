@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import FaqAccordion from '@/components/FaqAccordion';
 import InquiryForm from '@/components/InquiryForm';
+import ServiceDeliveryStrip from '@/components/ServiceDeliveryStrip';
+import { HIWI_SCHEMA_PROVIDER, HIWI_SCHEMA_AREA_SERVED } from '@/data/services';
 
 export const metadata: Metadata = {
   title: {
@@ -77,29 +79,9 @@ export default function ShowersAndEventsPage() {
     name: 'Corporate & Event Catering Services in Addis Ababa',
     serviceType: 'Corporate and Private Event Catering',
     url: 'https://hiwicatering.com/services/showers-and-events',
-    provider: {
-      '@type': 'FoodEstablishment',
-      '@id': 'https://hiwicatering.com/#business',
-      name: 'Hiwi Catering Services',
-      telephone: '+251963138123',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Summit Fiyel Bet Area',
-        addressLocality: 'Addis Ababa',
-        addressCountry: 'ET'
-      }
-    },
-    areaServed: [
-      'Summit Fiyel Bet',
-      'Bole',
-      'CMC',
-      'Kazanchis',
-      'Sarbet',
-      'Ayat',
-      'Megenagna',
-      'Addis Ababa'
-    ],
-    description: 'Corporate catering, seminar lunch setups, and bridal/baby shower catering in Addis Ababa with punctual delivery and high-standard hygiene.',
+    provider: HIWI_SCHEMA_PROVIDER,
+    areaServed: HIWI_SCHEMA_AREA_SERVED,
+    description: 'Corporate catering, seminar lunch setups, and bridal/baby shower catering in Addis Ababa and Addis Abeba with punctual delivery and high-standard hygiene.',
     offers: {
       '@type': 'Offer',
       price: '750',
@@ -257,6 +239,26 @@ export default function ShowersAndEventsPage() {
           </div>
         </div>
       </section>
+
+      {/* AEO / GEO Direct Answer Section */}
+      <section className="py-12 bg-gray-50 border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="bg-white p-6 sm:p-8 border border-gray-200 shadow-sm space-y-3">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-hiwi-primary block">
+              Corporate &amp; Private Event Summary
+            </span>
+            <h2 className="text-lg sm:text-xl font-black uppercase tracking-tight text-black">
+              HOW DOES HIWI CATERING HANDLE CORPORATE SEMINARS &amp; SHOWERS IN ADDIS ABABA?
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+              For seminars, workshops, bridal showers, and baby showers in Addis Ababa and Addis Abeba, <strong>Hiwi Catering Services</strong> provides structured per-person packages starting from 750 ETB/guest (25 to 400+ guests). Corporate and NGO bookings across Kazanchis, Bole, and CMC include formal pro-forma quotations, official receipts, punctual morning coffee/Buna breaks, and hot chafing dish buffet or executive boxed lunch setups.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Delivery Links */}
+      <ServiceDeliveryStrip serviceLabel="Corporate &amp; Event Catering" />
 
       {/* Direct Inquiry for Corporate & Showers */}
       <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-200">

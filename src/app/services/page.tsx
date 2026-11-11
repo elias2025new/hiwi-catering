@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { CATERING_SERVICES } from '@/data/services';
 import InquiryForm from '@/components/InquiryForm';
+import ServiceDeliveryStrip from '@/components/ServiceDeliveryStrip';
 
 export const metadata: Metadata = {
   title: {
@@ -315,6 +316,9 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* Local Delivery Links */}
+      <ServiceDeliveryStrip serviceLabel="Event Catering" />
 
       {/* Direct Inquiry Form Section */}
       <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-200">

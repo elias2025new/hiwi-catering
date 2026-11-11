@@ -6,8 +6,8 @@ export interface FaqItem {
 
 export const CATERING_FAQS: FaqItem[] = [
   {
-    question: "Where is Hiwi Catering located and which areas do you serve?",
-    answer: "Hiwi Catering is centrally headquartered in Summit, Addis Ababa, in the Fiyel Bet area (near CMC and Safari corridor). While our commercial preparation kitchen is based in Summit, our mobile catering teams deliver and serve events across all sub-cities in Addis Ababa, including Bole, CMC, Ayat, Kazanchis, Megenagna, Sarbet, Old Airport, Piassa, and Lebu.",
+    question: "Where is Hiwi Catering located and which areas near Summit, Ayat, and Bole do you serve?",
+    answer: "Hiwi Catering is headquartered in Summit Fiyel Bet, Addis Ababa (Addis Abeba), at Plus Code XVW2+PCH (8.996818, 38.851122). From our central kitchen, we provide rapid hot buffet dispatch across Bole Sub-City (Atlas, Medhanialem, Rwanda, Gerji, Bole Bulbula), Ayat & Tafo Corridor (Ayat Condominium, Meri), CMC, Kazanchis, Megenagna, Sarbet, Old Airport, Piassa, and Lebu.",
     category: "General"
   },
   {
@@ -22,7 +22,7 @@ export const CATERING_FAQS: FaqItem[] = [
   },
   {
     question: "How much does catering cost in Addis Ababa with Hiwi Catering?",
-    answer: "Our catering packages start from approximately 650 ETB to 750 ETB per person for classic celebrations and birthdays, 1,150 ETB per person for our Royal Habesha Banquet, and 1,650 ETB per person for all-inclusive Grand Wedding packages. Final pricing depends on your specific guest count, menu selection, and service requirements. Instant custom estimates can be requested through our online quote builder or directly on Telegram.",
+    answer: "Our catering packages start at 750 ETB per person for classic celebrations, birthdays, and seminars, 1,150 ETB per person for our Royal Habesha Banquet, and 1,650 ETB per person for all-inclusive Grand Wedding packages. Final pricing depends on your confirmed guest count, menu selection, and service requirements. Custom estimates can be requested via our inquiry form or Telegram (@hiwicatering).",
     category: "Pricing"
   },
   {

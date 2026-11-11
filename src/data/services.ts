@@ -41,7 +41,7 @@ export const CATERING_SERVICES: CateringService[] = [
     capacityRange: "100 - 1,500+ Guests",
     idealFor: ["Grand Weddings", "Traditional Melse", "Engagement Receptions", "Bridal Dinners"],
     startingPrice: 950,
-    image: "/images/hiwi-flyer.jpg",
+    image: "/images/wedding-catering.jpg",
     seoTitle: "Wedding Catering Services in Addis Ababa | Hiwi Catering",
     seoDescription: "Plan your dream wedding with Hiwi Catering in Addis Ababa. Traditional Agelgil feasts, Melse banquets & hot buffet stations. Book a free tasting today!"
   },
@@ -68,8 +68,8 @@ export const CATERING_SERVICES: CateringService[] = [
     ],
     capacityRange: "30 - 300+ Guests",
     idealFor: ["Kids Birthdays", "Sweet 16 / 18th Milestone", "Adult & Golden Celebrations", "Intimate Backyard Parties"],
-    startingPrice: 650,
-    image: "/images/hiwi-flyer.jpg",
+    startingPrice: 750,
+    image: "/images/social-catering.jpg",
     seoTitle: "Birthday Catering Services in Addis Ababa | Hiwi Catering",
     seoDescription: "Celebrate stress-free with Hiwi Catering in Addis Ababa. Delicious birthday buffets, kids menus, finger foods & traditional wats. Call 0963 138 123 today!"
   },
@@ -97,7 +97,7 @@ export const CATERING_SERVICES: CateringService[] = [
     capacityRange: "50 - 500+ Guests",
     idealFor: ["University Graduations", "College Celebrations", "Family Milestone Honors"],
     startingPrice: 850,
-    image: "/images/hiwi-flyer.jpg",
+    image: "/images/corporate-catering.jpg",
     seoTitle: "Graduation Catering Services in Addis Ababa | Hiwi Catering",
     seoDescription: "Celebrate academic milestone with Hiwi Catering in Addis Ababa. Generous traditional Habesha platters, modern buffets & hot chafing warmers. Book today!"
   },
@@ -125,20 +125,57 @@ export const CATERING_SERVICES: CateringService[] = [
     capacityRange: "25 - 400+ Guests",
     idealFor: ["Bridal Showers", "Baby Showers", "NGO & Corporate Seminars", "Business Luncheons", "Family Reunions"],
     startingPrice: 750,
-    image: "/images/hiwi-flyer.jpg",
+    image: "/images/corporate-catering.jpg",
     seoTitle: "Corporate & Event Catering Addis Ababa | Hiwi Catering",
     seoDescription: "Professional event catering in Addis Ababa for corporate seminars, business luncheons, bridal & baby showers. Punctual delivery. Book your date today!"
   }
 ];
 
-export const ADDIS_ABABA_LOCATIONS = [
-  { name: "Summit / Fiyel Bet", desc: "Our home headquarters and main commercial kitchen, ensuring rapid dispatch." },
-  { name: "CMC & Safari", desc: "Adjacent service zone with lightning-fast delivery and setup." },
-  { name: "Bole Sub-City", desc: "Atlas, Rwanda, Medhanialem, Olympia, and Japan areas." },
-  { name: "Ayat & Tafo Corridor", desc: "Ayat Condominium, Meri, and surrounding residential communities." },
-  { name: "Kazanchis & Kirkos", desc: "Hotels, embassies, and corporate venues." },
-  { name: "Megenagna & Yeka", desc: "Gurd Shola, Lem Hotel, and 22 Mazoria zones." },
-  { name: "Sarbet & Old Airport", desc: "Private residences, diplomatic halls, and garden venues." },
-  { name: "Piassa & Arada", desc: "Historical downtown, heritage halls, and church receptions." },
-  { name: "Lebu & Jomo", desc: "South-west Addis residential and private event venues." }
+export interface AddisLocationSummary {
+  name: string;
+  desc: string;
+  href?: string;
+}
+
+export const ADDIS_ABABA_LOCATIONS: AddisLocationSummary[] = [
+  { name: "Bole Sub-City", desc: "Atlas, Rwanda, Medhanialem, Gerji, Olympia, and Bole Bulbula.", href: "/locations/bole" },
+  { name: "Ayat & Tafo Corridor", desc: "Ayat Condominium, Ayat Village, Meri, and Tafo residential communities.", href: "/locations/ayat" },
+  { name: "Summit / Fiyel Bet", desc: "Our home headquarters (XVW2+PCH) and commercial kitchen for rapid dispatch.", href: "/locations/summit-and-cmc" },
+  { name: "CMC & Safari", desc: "Adjacent service zone with express 5-12 minute hot buffet delivery.", href: "/locations/summit-and-cmc" },
+  { name: "Kazanchis & Kirkos", desc: "Hotels, embassies, NGOs, and corporate conference venues.", href: "/locations/kazanchis-and-kirkos" },
+  { name: "Megenagna & Yeka", desc: "Gurd Shola, Lem Hotel, and 22 Mazoria zones.", href: "/locations" },
+  { name: "Sarbet & Old Airport", desc: "Private residences, diplomatic halls, and garden estates.", href: "/locations/sarbet-and-old-airport" },
+  { name: "Piassa & Arada", desc: "Historical downtown, heritage halls, and church receptions.", href: "/locations" },
+  { name: "Lebu & Jomo", desc: "Southwest Addis residential and private event venues.", href: "/locations/sarbet-and-old-airport" }
+];
+
+export const HIWI_SCHEMA_PROVIDER = {
+  '@type': 'FoodEstablishment',
+  '@id': 'https://hiwicatering.com/#business',
+  name: 'Hiwi Catering Services',
+  telephone: '+251963138123',
+  hasMap: 'https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6',
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 8.996818,
+    longitude: 38.851122
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Summit Fiyel Bet Area (Plus Code XVW2+PCH)',
+    addressLocality: 'Addis Ababa',
+    addressCountry: 'ET'
+  }
+};
+
+export const HIWI_SCHEMA_AREA_SERVED = [
+  { '@type': 'AdministrativeArea', name: 'Addis Ababa', sameAs: 'https://www.wikidata.org/wiki/Q3624' },
+  { '@type': 'AdministrativeArea', name: 'Addis Abeba', sameAs: 'https://www.wikidata.org/wiki/Q3624' },
+  { '@type': 'Place', name: 'Bole Sub-City' },
+  { '@type': 'Place', name: 'Ayat & Tafo Corridor' },
+  { '@type': 'Place', name: 'Summit Fiyel Bet' },
+  { '@type': 'Place', name: 'CMC' },
+  { '@type': 'Place', name: 'Kazanchis' },
+  { '@type': 'Place', name: 'Megenagna' },
+  { '@type': 'Place', name: 'Sarbet' }
 ];

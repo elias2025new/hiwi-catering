@@ -332,30 +332,37 @@ export default function AboutPage() {
           </h2>
           <div className="w-12 h-0.5 bg-black mx-auto my-4" />
           <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-            From Summit Fiyel Bet, our mobile catering vans dispatch commercial warmers, fresh injera, and culinary staff seamlessly across:
+            From our Summit Fiyel Bet kitchen (Plus Code XVW2+PCH, GPS 8.996818, 38.851122), our mobile catering vans dispatch commercial warmers, fresh injera, and culinary staff seamlessly across Addis Ababa &amp; Addis Abeba:
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {ADDIS_ABABA_LOCATIONS.map((loc) => (
-            <div 
+            <Link
               key={loc.name}
-              className="p-6 bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-200"
+              href={loc.href || '/locations'}
+              className="p-6 bg-white border border-gray-200 hover:border-black hover:shadow-lg transition-all duration-200 block group"
             >
               <div className="flex items-center gap-2 mb-2">
                 <MapPin className="w-4 h-4 text-black shrink-0" />
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black group-hover:text-hiwi-primary transition-colors">
                   {loc.name}
                 </h3>
               </div>
               <p className="text-xs text-gray-600 font-light leading-relaxed">
                 {loc.desc}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 flex flex-wrap justify-center gap-4">
+          <Link
+            href="/locations"
+            className="inline-block py-3.5 px-8 border-2 border-black text-black hover:bg-black hover:text-white text-xs font-bold uppercase tracking-[0.2em] transition-colors"
+          >
+            EXPLORE ALL DELIVERY AREAS
+          </Link>
           <Link
             href="/contact"
             className="inline-block py-3.5 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"

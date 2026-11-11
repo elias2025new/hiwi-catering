@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import FaqAccordion from '@/components/FaqAccordion';
 import InquiryForm from '@/components/InquiryForm';
+import ServiceDeliveryStrip from '@/components/ServiceDeliveryStrip';
+import { HIWI_SCHEMA_PROVIDER, HIWI_SCHEMA_AREA_SERVED } from '@/data/services';
 
 export const metadata: Metadata = {
   title: {
@@ -82,29 +84,9 @@ export default function GraduationCateringPage() {
     name: 'Graduation Catering Services in Addis Ababa',
     serviceType: 'University and College Graduation Banquet Catering',
     url: 'https://hiwicatering.com/services/graduation-catering',
-    provider: {
-      '@type': 'FoodEstablishment',
-      '@id': 'https://hiwicatering.com/#business',
-      name: 'Hiwi Catering Services',
-      telephone: '+251963138123',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Summit Fiyel Bet Area',
-        addressLocality: 'Addis Ababa',
-        addressCountry: 'ET'
-      }
-    },
-    areaServed: [
-      'Summit Fiyel Bet',
-      'Bole',
-      'CMC',
-      'Kazanchis',
-      'Sarbet',
-      'Ayat',
-      'Megenagna',
-      'Addis Ababa'
-    ],
-    description: 'Full-service graduation catering in Addis Ababa with generous traditional feasts, stainless steel buffet warmers, and complete setup.',
+    provider: HIWI_SCHEMA_PROVIDER,
+    areaServed: HIWI_SCHEMA_AREA_SERVED,
+    description: 'Full-service graduation catering in Addis Ababa and Addis Abeba with generous traditional feasts, stainless steel buffet warmers, and complete setup.',
     offers: {
       '@type': 'Offer',
       price: '850',
@@ -279,6 +261,9 @@ export default function GraduationCateringPage() {
           </div>
         </div>
       </section>
+
+      {/* Local Delivery Links */}
+      <ServiceDeliveryStrip serviceLabel="Graduation Catering" />
 
       {/* Direct Inquiry for Graduations */}
       <section className="py-16 sm:py-20 bg-white">

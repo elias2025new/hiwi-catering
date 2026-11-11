@@ -15,26 +15,23 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://hiwicatering.com'),
   title: {
-    default: 'Catering in Addis Ababa | Wedding & Event Catering | Hiwi Catering',
-    template: '%s | Hiwi Catering Services'
+    default: 'Catering in Addis Ababa & Abeba | Hiwi Catering',
+    template: '%s | Hiwi Catering'
   },
-  description: 'Premier full-service catering in Addis Ababa for weddings, corporate events, and birthdays. Authentic Habesha feasts & buffets across Bole, CMC & Summit. Call 0963 138 123!',
+  description: 'Full-service catering in Addis Ababa & Addis Abeba for weddings, birthdays, graduations & corporate events. Serving Bole, Ayat, CMC & Summit. Call 0963 138 123.',
   keywords: [
     'catering',
-    'catering service',
-    'catering Addis Ababa',
+    'catering in addis abeba',
+    'catering in addis ababa',
     'catering service Addis Ababa',
-    'catering service for birthday',
-    'catering service for wedding',
-    'catering service for graduation',
-    'best catering in Addis Ababa',
-    'Ethiopian catering service',
-    'catering Summit Addis Ababa',
-    'catering Fiyel Bet Addis Ababa',
+    'catering Bole Addis Ababa',
+    'catering Ayat Addis Ababa',
+    'catering Summit Fiyel Bet',
     'wedding catering Addis Ababa',
     'birthday catering Addis Ababa',
     'graduation catering Addis Ababa',
     'corporate catering Addis Ababa',
+    'Ethiopian catering service',
     'የሰርግ ምግብ ዝግጅት',
     'የምርቃት ምግብ',
     'የልደት ምግብ ዝግጅት',
@@ -59,25 +56,22 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://hiwicatering.com',
     siteName: 'Hiwi Catering Services',
-    title: 'Hiwi Catering Addis Ababa | The Taste You Love!',
-    description: 'Premier catering in Addis Ababa: Weddings, Birthdays, Graduations, and Events. Headquartered in Summit Fiyel Bet with city-wide delivery and buffet service.',
+    title: 'Catering in Addis Ababa & Abeba | Hiwi Catering',
+    description: 'Wedding, birthday, graduation, and corporate catering in Addis Ababa & Addis Abeba. Summit Fiyel Bet kitchen serving Bole, Ayat & all 11 sub-cities.',
     images: [
       {
-        url: '/images/hiwi-flyer.jpg',
+        url: '/images/wedding-catering.jpg',
         width: 1200,
         height: 630,
-        alt: 'Hiwi Catering Services Addis Ababa - The Taste You Love!',
+        alt: 'Hiwi Catering Services Addis Ababa & Addis Abeba - Weddings, Buffets & Events',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hiwi Catering Addis Ababa | Full-Service Event Catering',
-    description: 'Wedding, birthday, and graduation catering in Addis Ababa. Authentic Habesha feasts & modern buffet setups.',
-    images: ['/images/hiwi-flyer.jpg'],
-  },
-  alternates: {
-    canonical: 'https://hiwicatering.com',
+    title: 'Catering in Addis Ababa & Abeba | Hiwi Catering',
+    description: 'Wedding, birthday, graduation & event catering across Bole, Ayat, Summit & Addis Ababa. Call 0963 138 123.',
+    images: ['/images/wedding-catering.jpg'],
   },
 };
 
