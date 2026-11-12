@@ -4,17 +4,16 @@ import { ADDIS_ABABA_LOCATIONS } from '@/data/services';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1C1917] text-white border-t border-black/40 pt-16 pb-12">
+    <footer className="bg-hiwi-dark text-white border-t border-white/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Top Footer Brand & Logo Frame */}
+        {/* Top Footer Brand Frame */}
         <div className="mb-12">
           <Link href="/" className="inline-block group" aria-label="Hiwi Catering Homepage">
-            <div className="border-[2px] border-white px-5 py-2.5 text-center transition-all duration-200 group-hover:bg-white group-hover:text-black">
-              <span className="block text-xl sm:text-2xl font-black tracking-[0.2em] uppercase text-white group-hover:text-black leading-tight font-sans">
+            <div className="rounded-lg border-2 border-white px-5 py-2.5 text-center transition-colors duration-200 group-hover:bg-white group-hover:text-hiwi-dark">
+              <span className="block text-xl sm:text-2xl font-black tracking-[0.18em] uppercase text-white group-hover:text-hiwi-dark leading-tight">
                 HIWI CATERING
               </span>
-              <span className="block text-xs font-serif italic tracking-widest text-gray-300 group-hover:text-gray-800 -mt-0.5">
+              <span className="block text-xs font-semibold tracking-[0.2em] uppercase text-stone-300 group-hover:text-stone-700 mt-0.5">
                 catering &amp; events
               </span>
             </div>
@@ -23,13 +22,12 @@ export default function Footer() {
 
         {/* 4 Multi-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10 text-xs">
-          
-          {/* Column 1: Service Area (Hyperlocal Links) */}
+          {/* Column 1: Service Area */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
+            <h4 className="text-sm font-bold tracking-wider uppercase text-white">
               Service Area
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-400">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4 text-stone-300">
               {ADDIS_ABABA_LOCATIONS.map((loc) => (
                 <Link
                   key={loc.name}
@@ -42,7 +40,7 @@ export default function Footer() {
             </div>
             <Link
               href="/locations"
-              className="inline-block text-[11px] font-bold uppercase tracking-wider text-hiwi-gold hover:text-white transition-colors pt-1"
+              className="inline-block text-xs font-bold uppercase tracking-wider text-hiwi-gold hover:text-white transition-colors pt-1"
             >
               All Delivery Areas &rarr;
             </Link>
@@ -50,10 +48,10 @@ export default function Footer() {
 
           {/* Column 2: Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
+            <h4 className="text-sm font-bold tracking-wider uppercase text-white">
               Links
             </h4>
-            <ul className="space-y-2.5 text-gray-400 uppercase tracking-wider font-medium">
+            <ul className="space-y-2.5 text-stone-300 uppercase tracking-wider font-medium">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
                   Home
@@ -89,36 +87,44 @@ export default function Footer() {
 
           {/* Column 3: Verified Contact & Exact Pin */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
+            <h4 className="text-sm font-bold tracking-wider uppercase text-white">
               Contact
             </h4>
-            <div className="space-y-3 text-gray-400 leading-relaxed">
-              <p className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
+            <div className="space-y-3 text-stone-300 leading-relaxed">
+              <p className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-hiwi-gold shrink-0 mt-0.5" strokeWidth={1.75} />
                 <span>
-                  Summit Fiyel Bet Area (XVW2+PCH),<br />
+                  Summit Fiyel Bet Area (
+                  <code className="font-mono tabular-nums text-stone-100 bg-white/10 px-1 py-0.5 rounded">
+                    XVW2+PCH
+                  </code>
+                  ),
+                  <br />
                   Addis Ababa (Addis Abeba), Ethiopia
                 </span>
               </p>
-              <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-white shrink-0" />
-                <a href="tel:+251963138123" className="hover:text-white transition-colors font-semibold">
+              <p className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-hiwi-gold shrink-0" strokeWidth={1.75} />
+                <a
+                  href="tel:+251963138123"
+                  className="hover:text-white transition-colors font-semibold text-white tabular-nums"
+                >
                   0963 138 123
                 </a>
               </p>
-              <p className="flex items-center gap-2">
-                <Send className="w-3.5 h-3.5 text-white shrink-0" />
-                <a 
-                  href="https://t.me/hiwicatering" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+              <p className="flex items-center gap-2.5">
+                <Send className="w-4 h-4 text-hiwi-gold shrink-0" strokeWidth={1.75} />
+                <a
+                  href="https://t.me/hiwicatering"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   Telegram: @hiwicatering
                 </a>
               </p>
-              <p className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-hiwi-gold shrink-0" />
+              <p className="flex items-center gap-2.5">
+                <ExternalLink className="w-4 h-4 text-hiwi-gold shrink-0" strokeWidth={1.75} />
                 <a
                   href="https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6"
                   target="_blank"
@@ -133,15 +139,15 @@ export default function Footer() {
 
           {/* Column 4: Verified Direct Booking & Guides */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-widest uppercase text-white font-sans">
+            <h4 className="text-sm font-bold tracking-wider uppercase text-white">
               Book &amp; Guides
             </h4>
-            <ul className="space-y-2.5 text-gray-400 uppercase tracking-wider font-medium">
+            <ul className="space-y-2.5 text-stone-300 uppercase tracking-wider font-medium">
               <li>
-                <a 
-                  href="https://t.me/hiwicatering" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://t.me/hiwicatering"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   Telegram Channel
@@ -169,25 +175,23 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Bottom Bar: Copyright & Legal */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500 uppercase tracking-wider">
-          <div>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-300 uppercase tracking-wider">
+          <div className="tabular-nums">
             &copy; {new Date().getFullYear()} HIWI CATERING &amp; EVENTS. ADDIS ABABA, ETHIOPIA.
           </div>
           <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-gray-300 transition-colors">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               PRIVACY POLICY
             </Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:text-gray-300 transition-colors">
+            <span className="text-stone-600" aria-hidden="true">|</span>
+            <Link href="/terms" className="hover:text-white transition-colors">
               TERMS OF USE
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

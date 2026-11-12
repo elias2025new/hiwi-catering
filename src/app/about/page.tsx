@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ChevronRight, 
-  MapPin, 
-  PhoneCall, 
-  Send, 
-  ShieldCheck, 
-  Award, 
-  Clock, 
-  Users, 
-  Sparkles, 
-  Utensils, 
-  CheckCircle2,
-  Building2,
-  Star
+import {
+  ChevronRight,
+  MapPin,
+  PhoneCall,
+  ShieldCheck,
+  Award,
+  Users,
+  Utensils,
+  Star,
 } from 'lucide-react';
 import { ADDIS_ABABA_LOCATIONS } from '@/data/services';
 
@@ -22,7 +17,8 @@ export const metadata: Metadata = {
   title: {
     absolute: 'About Hiwi Catering Addis Ababa | Summit Fiyel Bet Kitchen',
   },
-  description: 'Learn about Hiwi Catering in Addis Ababa. Commercial prep kitchen in Summit Fiyel Bet. Dedicated to authentic Habesha banquets, hot buffets & citywide service.',
+  description:
+    'Learn about Hiwi Catering in Addis Ababa. Commercial prep kitchen in Summit Fiyel Bet. Dedicated to authentic Habesha banquets, hot buffets & citywide service.',
   alternates: {
     canonical: 'https://hiwicatering.com/about',
   },
@@ -32,11 +28,12 @@ export const metadata: Metadata = {
     'catering Summit Fiyel Bet',
     'best catering team Addis Ababa',
     'Ethiopian catering company',
-    'ስለ ሂዊ ኬተሪንግ'
+    'ስለ ሂዊ ኬተሪንግ',
   ],
   openGraph: {
     title: 'About Hiwi Catering Addis Ababa | Summit Fiyel Bet Kitchen',
-    description: 'Learn about Hiwi Catering in Addis Ababa. Commercial prep kitchen in Summit Fiyel Bet. Authentic Habesha banquets and hot chafing buffets.',
+    description:
+      'Learn about Hiwi Catering in Addis Ababa. Commercial prep kitchen in Summit Fiyel Bet. Authentic Habesha banquets and hot chafing buffets.',
     url: 'https://hiwicatering.com/about',
     siteName: 'Hiwi Catering Services',
     locale: 'en_US',
@@ -46,16 +43,16 @@ export const metadata: Metadata = {
         url: '/images/corporate-catering.jpg',
         width: 1200,
         height: 630,
-        alt: 'About Hiwi Catering Services - Summit Fiyel Bet, Addis Ababa'
-      }
-    ]
+        alt: 'About Hiwi Catering Services - Summit Fiyel Bet, Addis Ababa',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Hiwi Catering Addis Ababa | Summit Fiyel Bet Kitchen',
     description: 'Learn about Hiwi Catering in Addis Ababa. Commercial prep kitchen in Summit Fiyel Bet.',
-    images: ['/images/corporate-catering.jpg']
-  }
+    images: ['/images/corporate-catering.jpg'],
+  },
 };
 
 export default function AboutPage() {
@@ -67,22 +64,23 @@ export default function AboutPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://hiwicatering.com'
+        item: 'https://hiwicatering.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'About Us',
-        item: 'https://hiwicatering.com/about'
-      }
-    ]
+        item: 'https://hiwicatering.com/about',
+      },
+    ],
   };
 
   const aboutSchema = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'About Hiwi Catering Services',
-    description: 'Learn about Hiwi Catering Services, premier Ethiopian catering based in Summit Fiyel Bet, Addis Ababa.',
+    description:
+      'Learn about Hiwi Catering Services, premier Ethiopian catering based in Summit Fiyel Bet, Addis Ababa.',
     url: 'https://hiwicatering.com/about',
     mainEntity: {
       '@type': 'FoodEstablishment',
@@ -93,14 +91,31 @@ export default function AboutPage() {
         '@type': 'PostalAddress',
         streetAddress: 'Summit Fiyel Bet Area',
         addressLocality: 'Addis Ababa',
-        addressCountry: 'ET'
-      }
-    }
+        addressCountry: 'ET',
+      },
+    },
   };
 
+  const pillars = [
+    {
+      icon: ShieldCheck,
+      title: 'Hygienic Commercial Kitchen',
+      desc: 'Food safety guides every batch prepared at our Summit kitchen, with sanitized stainless prep tables, strict temperature controls, and daily inspected sourcing.',
+    },
+    {
+      icon: Utensils,
+      title: '100% Piping Hot Delivery',
+      desc: 'We transport freshly simmered wats and grilled cuts in insulated carriers directly into gleaming commercial bain-marie chafing warmers.',
+    },
+    {
+      icon: Award,
+      title: 'Authentic Habesha Recipes',
+      desc: 'Slow-simmered Berbere Doro Wat with farm eggs, Gurage Kitfo with niter kibbeh, saffron rice pilafs, and dedicated fasting Beyaynetu.',
+    },
+  ];
+
   return (
-    <div className="bg-white text-gray-900 font-sans selection:bg-black selection:text-white">
-      {/* Structured Data */}
+    <div className="bg-hiwi-cream text-hiwi-dark font-sans selection:bg-hiwi-100 selection:text-hiwi-primary">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -110,297 +125,232 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
       />
 
-      {/* Breadcrumb Navigation */}
-      <div className="bg-gray-50 border-b border-gray-200 py-3 text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 uppercase tracking-wider text-[11px] font-medium">
-          <Link href="/" className="hover:text-hiwi-primary transition-colors">Home</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <span className="text-black font-bold">About Us</span>
+      {/* Breadcrumb */}
+      <div className="bg-hiwi-stone border-b border-hiwi-border py-3 text-xs text-stone-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 uppercase tracking-wider font-medium">
+          <Link href="/" className="hover:text-hiwi-primary transition-colors">
+            Home
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-stone-500" strokeWidth={1.75} />
+          <span className="text-hiwi-dark font-bold">About Us</span>
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Johnny Burke 2-Column Story & Framed Image              */}
-      {/* ========================================================================= */}
+      {/* Hero Section */}
       <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Left Column: Story & Credentials */}
-          <div className="lg:col-span-7 space-y-6">
-            <div>
-              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-hiwi-primary block mb-2">
-                Our Story &amp; Hospitality
-              </span>
-              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-[0.15em] text-black leading-tight">
-                CRAFTING UNFORGETTABLE FEASTS IN ADDIS ABABA
-              </h1>
-              <div className="w-12 h-0.5 bg-black my-4" />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-hiwi-dark leading-[1.1] text-balance">
+              CRAFTING UNFORGETTABLE HABESHA FEASTS IN ADDIS ABABA
+            </h1>
 
-            <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-              Hiwi Catering was founded with a singular dedication: to celebrate life&apos;s most meaningful milestones with exceptional food and effortless hospitality. Headquartered in <strong>Summit Fiyel Bet</strong>, our commercial kitchen prepares authentic Habesha banquets and contemporary buffets crafted with unmatched pride, hygiene, and generous portions.
+            <p className="text-base text-stone-700 leading-relaxed">
+              Headquartered in <strong className="text-hiwi-dark">Summit Fiyel Bet</strong>, Hiwi Catering prepares
+              authentic Ethiopian banquets and heated buffet spreads built around freshness, kitchen hygiene, and
+              attentive table hospitality.
             </p>
 
-            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-              From grand traditional weddings with 1,500+ guests to university graduations, executive corporate conferences, and lively birthday parties, our mission remains steadfast: piping hot food, time-honored Ethiopian culinary authenticity, and attentive service that lets hosts enjoy their celebration as honored guests.
+            <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+              From grand Melse weddings serving <span className="tabular-nums font-semibold">1,500+</span> guests to
+              university graduations, corporate seminars, and family birthdays, our crew delivers hot food on schedule so
+              hosts enjoy the moment alongside their guests.
             </p>
 
-            {/* Johnny Burke Boxed Stats Grid */}
-            <div className="grid grid-cols-3 gap-3 pt-3 border-y border-gray-200 py-4 text-center sm:text-left">
+            <div className="grid grid-cols-3 gap-6 py-4 border-y border-hiwi-border">
               <div>
-                <span className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black block">
-                  Summit HQ
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-500 font-medium tracking-wider uppercase block mt-0.5">
-                  Fiyel Bet Kitchen
-                </span>
-              </div>
-              <div className="border-x border-gray-200 px-2 sm:px-4">
-                <span className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black block">
-                  All 11
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-500 font-medium tracking-wider uppercase block mt-0.5">
-                  Sub-Cities Served
-                </span>
+                <span className="text-xl sm:text-2xl font-black text-hiwi-dark block">Summit HQ</span>
+                <span className="text-xs text-stone-600 font-medium block mt-0.5">Fiyel Bet Kitchen</span>
               </div>
               <div>
-                <span className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black block">
-                  7 Days
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-500 font-medium tracking-wider uppercase block mt-0.5">
-                  24/7 Setup Dispatch
-                </span>
+                <span className="text-xl sm:text-2xl font-black text-hiwi-dark block tabular-nums">All 11</span>
+                <span className="text-xs text-stone-600 font-medium block mt-0.5">Sub-Cities Served</span>
+              </div>
+              <div>
+                <span className="text-xl sm:text-2xl font-black text-hiwi-dark block tabular-nums">7 Days</span>
+                <span className="text-xs text-stone-600 font-medium block mt-0.5 tabular-nums">24/7 Setup Dispatch</span>
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-1">
+              <Link
+                href="/inquiry"
+                className="py-3.5 px-5 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-extrabold uppercase tracking-wider transition-colors shadow-warm text-center inline-flex items-center justify-center whitespace-nowrap"
+              >
+                Request Custom Quote
+              </Link>
               <a
                 href="tel:+251963138123"
-                className="py-3.5 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors text-center inline-flex items-center justify-center gap-2"
+                className="py-3.5 px-5 rounded-lg border-2 border-hiwi-dark text-hiwi-dark hover:bg-hiwi-dark hover:text-white text-xs font-bold uppercase tracking-wider transition-colors text-center inline-flex items-center justify-center gap-2 tabular-nums whitespace-nowrap"
               >
-                <PhoneCall className="w-4 h-4" />
+                <PhoneCall className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                 <span>Call: 0963 138 123</span>
               </a>
-
               <Link
                 href="/services"
-                className="py-3.5 px-8 border-2 border-black text-black hover:bg-black hover:text-white text-xs font-extrabold uppercase tracking-[0.2em] transition-all text-center inline-flex items-center justify-center gap-2"
+                className="py-3.5 px-5 rounded-lg border border-stone-300 bg-white text-hiwi-dark hover:border-hiwi-primary hover:text-hiwi-primary text-xs font-bold uppercase tracking-wider transition-colors text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap"
               >
-                <span>View Our Services</span>
-                <ChevronRight className="w-4 h-4" />
+                <span>Our Services</span>
+                <ChevronRight className="w-4 h-4 shrink-0" strokeWidth={1.75} />
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Sharp Editorial Framed Catering Image */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-md bg-white border border-gray-200 p-3 sm:p-4 shadow-xl">
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+          <div className="lg:col-span-6">
+            <div className="w-full bg-white border border-hiwi-border rounded-2xl p-2 shadow-warm-lg">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-hiwi-stone">
                 <Image
-                  src="/images/corporate-catering.jpg"
+                  src="/images/hero-bg.jpg"
                   alt="Hiwi Catering Hot Buffet and Chafing Dish Banquet Setup Addis Ababa"
                   fill
                   priority
                   className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 450px"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-3 bg-black text-white text-center mt-3">
-                <span className="text-xs font-black uppercase tracking-[0.2em] text-white block">
-                  Authentic Habesha Hospitality
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-gray-400 block mt-0.5">
-                  Summit Fiyel Bet • Addis Ababa, Ethiopia
-                </span>
-              </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. STATS COUNTER STRIP (Johnny Burke Dark Band)                           */}
-      {/* ========================================================================= */}
-      <section className="bg-[#1F2024] text-white py-10 px-4 sm:px-6 lg:px-8 border-y border-white/5">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-          
-          <div className="pt-4 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-              500+
-            </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <Users className="w-4 h-4 text-hiwi-gold" />
-              <span>EVENTS CATERED</span>
+      {/* Stats Dark Band */}
+      <section className="bg-hiwi-dark text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <Users className="w-5 h-5 text-hiwi-gold" strokeWidth={1.75} />
             </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">500+</span>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">EVENTS CATERED</span>
           </div>
 
-          <div className="pt-6 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-              100%
-            </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <Star className="w-4 h-4 text-hiwi-gold fill-hiwi-gold" />
-              <span>PIPING HOT BUFFETS</span>
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <Star className="w-5 h-5 text-hiwi-gold fill-hiwi-gold" strokeWidth={1.75} />
             </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">100%</span>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">PIPING HOT BUFFETS</span>
           </div>
 
-          <div className="pt-6 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-              11
-            </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <MapPin className="w-4 h-4 text-hiwi-gold" />
-              <span>SUB-CITIES COVERED</span>
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <MapPin className="w-5 h-5 text-hiwi-gold" strokeWidth={1.75} />
             </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">11</span>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">SUB-CITIES COVERED</span>
           </div>
-
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 3. CULINARY STANDARDS: Johnny Burke 3-Pillar Dark Section                */}
-      {/* ========================================================================= */}
-      <section className="bg-[#1C1D21] text-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Culinary Standards Dark Section */}
+      <section className="bg-hiwi-charcoal text-white py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-white">
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white text-balance">
               OUR CULINARY STANDARDS &amp; PROMISE
             </h2>
-            <div className="w-12 h-0.5 bg-white mx-auto my-4" />
-            <p className="text-xs sm:text-sm text-gray-300 uppercase tracking-widest font-light">
-              Quality and food safety at the heart of every banquet.
+            <p className="text-sm sm:text-base text-stone-300 leading-relaxed">
+              Every banquet follows strict temperature, sourcing, and plating discipline.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 text-center max-w-6xl mx-auto">
-            
-            {/* Pillar 1 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <ShieldCheck className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                Hygienic Commercial Kitchen
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                Food safety is our primary pillar. Our central prep facility in Summit adheres to strict hygiene standards, sanitized stainless steel food prep equipment, rigorous temperature controls, and fresh daily sourcing.
-              </p>
-            </div>
-
-            {/* Pillar 2 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <Utensils className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                100% Piping Hot Delivery
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                No lukewarm buffet trays. We transport all food in heavy-duty insulated thermal carriers and transfer them immediately into commercial stainless steel bain-marie warmers so every guest enjoys fresh, piping hot food.
-              </p>
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                Authentic Habesha Recipes
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                Slow-simmered Berbere Doro Wat with organic chicken and eggs, prime Gurage Kitfo prepared with spiced clarified butter (niter kibbeh), aromatic rice pilafs, and rich fasting Beyaynetu crafted from authentic heritage recipes.
-              </p>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+            {pillars.map((p) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={p.title}
+                  className="bg-hiwi-dark/60 border border-white/10 rounded-2xl p-8 flex flex-col items-center space-y-4"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-hiwi-gold" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-white">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-stone-300 leading-relaxed">{p.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 4. DISPATCH NETWORK & SERVICE AREAS (Clean White Grid)                     */}
-      {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-hiwi-primary block mb-2">
-            Addis Ababa Delivery Radius
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-black">
-            SERVING EVERY CORNER OF ADDIS ABABA
-          </h2>
-          <div className="w-12 h-0.5 bg-black mx-auto my-4" />
-          <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-            From our Summit Fiyel Bet kitchen (Plus Code XVW2+PCH, GPS 8.996818, 38.851122), our mobile catering vans dispatch commercial warmers, fresh injera, and culinary staff seamlessly across Addis Ababa &amp; Addis Abeba:
-          </p>
-        </div>
+      {/* Dispatch Network Grid */}
+      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8 border-b border-hiwi-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+              SERVING EVERY CORNER OF ADDIS ABABA
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+              From our Summit Fiyel Bet kitchen (Plus Code{' '}
+              <code className="font-mono text-xs bg-hiwi-stone px-1.5 py-0.5 rounded">XVW2+PCH</code>, GPS{' '}
+              <code className="font-mono tabular-nums text-xs bg-hiwi-stone px-1.5 py-0.5 rounded">
+                8.996818, 38.851122
+              </code>
+              ), our catering vans deliver hot buffets and uniformed staff across Addis Ababa &amp; Addis Abeba:
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {ADDIS_ABABA_LOCATIONS.map((loc) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {ADDIS_ABABA_LOCATIONS.map((loc) => (
+              <Link
+                key={loc.name}
+                href={loc.href || '/locations'}
+                className="p-6 bg-hiwi-cream border border-hiwi-border hover:border-hiwi-primary rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-200 block group"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <MapPin className="w-4 h-4 text-hiwi-primary shrink-0" strokeWidth={1.75} />
+                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-hiwi-dark group-hover:text-hiwi-primary transition-colors">
+                    {loc.name}
+                  </h3>
+                </div>
+                <p className="text-sm text-stone-600 leading-relaxed">{loc.desc}</p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12 flex flex-wrap justify-center gap-4">
             <Link
-              key={loc.name}
-              href={loc.href || '/locations'}
-              className="p-6 bg-white border border-gray-200 hover:border-black hover:shadow-lg transition-all duration-200 block group"
+              href="/locations"
+              className="py-3.5 px-8 rounded-lg border-2 border-hiwi-dark text-hiwi-dark hover:bg-hiwi-dark hover:text-white text-xs font-extrabold uppercase tracking-wider transition-colors"
             >
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-black shrink-0" />
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black group-hover:text-hiwi-primary transition-colors">
-                  {loc.name}
-                </h3>
-              </div>
-              <p className="text-xs text-gray-600 font-light leading-relaxed">
-                {loc.desc}
-              </p>
+              EXPLORE ALL DELIVERY AREAS
             </Link>
-          ))}
-        </div>
-
-        <div className="text-center mt-12 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/locations"
-            className="inline-block py-3.5 px-8 border-2 border-black text-black hover:bg-black hover:text-white text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-          >
-            EXPLORE ALL DELIVERY AREAS
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-block py-3.5 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-          >
-            VISIT OUR SUMMIT KITCHEN &rarr;
-          </Link>
+            <Link
+              href="/contact"
+              className="py-3.5 px-8 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-extrabold uppercase tracking-wider transition-colors shadow-warm"
+            >
+              VISIT OUR SUMMIT KITCHEN &rarr;
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 5. BOTTOM CTA BANNER: Matches Homepage & Contact                          */}
-      {/* ========================================================================= */}
-      <section className="bg-black text-white py-14 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+      {/* Bottom CTA Banner */}
+      <section className="bg-hiwi-dark text-white py-14 px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="space-y-1">
-            <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-hiwi-gold block">
-              The Taste You Love!
-            </span>
-            <h2 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">
+          <div className="space-y-1.5">
+            <h2 className="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-white">
               Ready to Plan Your Next Celebration?
             </h2>
-            <p className="text-xs text-gray-400 font-light max-w-xl">
-              Contact our team today to discuss menus, schedule a wedding tasting consultation, or receive a fast custom quote.
+            <p className="text-sm text-stone-300 max-w-xl">
+              Contact our Summit team to discuss menus, schedule a wedding tasting consultation, or request a quote.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
             <Link
               href="/inquiry"
-              className="py-3 px-6 bg-hiwi-primary hover:bg-hiwi-hover text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors"
+              className="py-3.5 px-6 rounded-lg bg-hiwi-primary hover:bg-hiwi-hover text-white text-xs font-extrabold uppercase tracking-wider transition-colors shadow-warm"
             >
               Get Custom Quote
             </Link>
             <a
               href="tel:+251963138123"
-              className="py-3 px-6 border border-white/30 hover:border-white text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center gap-2"
+              className="py-3.5 px-6 rounded-lg border-2 border-white text-white hover:bg-white hover:text-hiwi-dark text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 tabular-nums"
             >
-              <PhoneCall className="w-3.5 h-3.5" />
+              <PhoneCall className="w-4 h-4" strokeWidth={1.75} />
               <span>0963 138 123</span>
             </a>
           </div>

@@ -1,15 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { 
-  Phone, 
-  Send, 
-  CheckCircle, 
-  Clock, 
-  Calendar as CalendarIcon, 
-  ChevronLeft, 
+import { useEffect, useRef, useState } from 'react';
+import {
+  Phone,
+  Send,
+  CheckCircle,
+  Clock,
+  Calendar as CalendarIcon,
+  ChevronLeft,
   ChevronRight,
-  AlertCircle
+  AlertCircle,
+  Loader2,
 } from 'lucide-react';
 
 interface InquiryFormProps {
@@ -19,19 +20,27 @@ interface InquiryFormProps {
 }
 
 export default function InquiryForm({
-  title = "READY TO MAKE YOUR NEXT EVENT PERFECT?",
-  subtitle = "Fill out this form and we will get in touch with you within 24 hours",
-  className = "",
+  title = 'GET A CUSTOM CATERING QUOTE IN 24 HOURS',
+  subtitle = 'Share your event date, guest estimate, and Addis Ababa venue area for a transparent menu proposal.',
+  className = '',
 }: InquiryFormProps) {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [dateError, setDateError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     date: '',
-    details: ''
+    details: '',
   });
+  const submitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    };
+  }, []);
 
   // Custom Calendar State
   const today = new Date();
@@ -42,14 +51,12 @@ export default function InquiryForm({
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
   ];
-  const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
-  // Days in selected month
   const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
-  // Day of week of 1st day of month
   const firstDayOfWeek = new Date(calendarYear, calendarMonth, 1).getDay();
 
   const handlePrevMonth = (e: React.MouseEvent) => {
@@ -79,7 +86,7 @@ export default function InquiryForm({
     const selectedMonth = String(calendarMonth + 1).padStart(2, '0');
     const selectedDay = String(day).padStart(2, '0');
     const dateStr = `${selectedYear}-${selectedMonth}-${selectedDay}`;
-    setFormData(prev => ({ ...prev, date: dateStr }));
+    setFormData((prev) => ({ ...prev, date: dateStr }));
     setDateError(false);
     setIsCalendarOpen(false);
   };
@@ -113,183 +120,207 @@ export default function InquiryForm({
       weekday: 'short',
       month: 'short',
       day: 'numeric',
-      year: 'numeric'
+      year: 'numeric',
     });
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!formData.date) {
       setDateError(true);
+      setIsCalendarOpen(true);
       return;
     }
     if (!formData.name || !formData.phone) return;
-    setFormSubmitted(true);
+
+    setIsSubmitting(true);
+    submitTimerRef.current = setTimeout(() => {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }, 480);
   };
 
   const telegramMessage = encodeURIComponent(
-    `Hello Hiwi Catering, I submitted an event inquiry on your website.\n\n` +
-    `Name: ${formData.name}\n` +
-    `Phone: ${formData.phone}\n` +
-    (formData.email ? `Email: ${formData.email}\n` : '') +
-    `Event Date: ${formData.date}\n` +
-    `Details: ${formData.details}`
+    `Hello Hiwi Catering! My name is ${formData.name || 'a prospective client'}. I am planning an event on ${formData.date ? formatDisplayDate(formData.date) : 'an upcoming date'}. My phone is ${formData.phone || '0963138123'}. Details: ${formData.details}`
   );
 
   return (
-    <div className={`bg-white p-4 sm:p-7 md:p-8 shadow-2xl border border-gray-200 text-gray-900 ${className}`}>
-      {/* Form Heading */}
-      <div className="text-center mb-3 sm:mb-4">
-        <h2 className="text-sm sm:text-xl md:text-2xl font-black uppercase tracking-wider text-black leading-tight">
+    <div
+      className={`bg-white rounded-2xl p-6 sm:p-8 shadow-card-hover border border-hiwi-border text-left relative ${className}`}
+    >
+      <div className="text-center mb-6 space-y-2">
+        <h2 className="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-hiwi-dark leading-snug text-balance">
           {title}
         </h2>
-        <div className="w-8 sm:w-12 h-0.5 bg-black mx-auto my-1.5 sm:my-2" />
-        <p className="text-[10px] sm:text-xs text-gray-500 font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 font-normal max-w-md mx-auto leading-relaxed">
           {subtitle}
         </p>
       </div>
 
       {formSubmitted ? (
-        <div className="text-center py-4 sm:py-6 space-y-3 animate-in fade-in-50 duration-200">
-          <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-emerald-600 mx-auto" />
-          <h3 className="text-sm sm:text-lg font-bold uppercase tracking-wider text-black">
+        <div className="bg-hiwi-cream border border-hiwi-border rounded-xl p-6 text-center space-y-4 animate-feedback-in">
+          <div className="w-12 h-12 rounded-xl bg-green-100 text-green-700 flex items-center justify-center mx-auto">
+            <CheckCircle className="w-6 h-6" strokeWidth={1.75} />
+          </div>
+          <h3 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
             Thank You, {formData.name}!
           </h3>
-          <p className="text-[11px] sm:text-xs text-gray-600 font-light leading-relaxed max-w-sm mx-auto">
-            We have received your event inquiry for <strong>{formatDisplayDate(formData.date) || 'your celebration'}</strong>. Our event team will contact you at <strong>{formData.phone}</strong> shortly.
+          <p className="text-xs sm:text-sm text-stone-700 font-normal leading-relaxed max-w-sm mx-auto">
+            We have received your catering inquiry for{' '}
+            <strong className="text-hiwi-dark">{formatDisplayDate(formData.date) || 'your celebration'}</strong>. Our
+            team will call you at <strong className="text-hiwi-dark tabular-nums">{formData.phone}</strong> within 24
+            hours.
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
+          <div className="pt-2 flex flex-col sm:flex-row gap-2.5 justify-center">
             <a
               href="tel:+251963138123"
-              className="py-2.5 px-4 bg-black text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
+              className="py-2.5 px-4 rounded-lg bg-hiwi-dark text-white text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2 hover:bg-stone-800 transition-colors tabular-nums"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3.5 h-3.5" strokeWidth={1.75} />
               <span>Call 0963 138 123</span>
             </a>
             <a
               href={`https://t.me/hiwicatering?text=${telegramMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2.5 px-4 bg-hiwi-primary text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-flex items-center justify-center gap-2 hover:bg-hiwi-hover transition-colors"
+              className="py-2.5 px-4 rounded-lg bg-hiwi-primary text-white text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2 hover:bg-hiwi-hover transition-colors shadow-warm"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5" strokeWidth={1.75} />
               <span>Confirm on Telegram</span>
             </a>
           </div>
+          <button
+            type="button"
+            onClick={() => {
+              setFormSubmitted(false);
+              setFormData({ name: '', phone: '', email: '', date: '', details: '' });
+            }}
+            className="text-xs font-semibold text-stone-600 hover:text-hiwi-primary underline underline-offset-2 transition-colors"
+          >
+            Submit another event inquiry
+          </button>
         </div>
       ) : (
-        <form onSubmit={handleFormSubmit} className="space-y-2.5 sm:space-y-3.5">
-          {/* Row 1: Name & Phone - Balanced 2-column grid without placeholders */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
+        <form onSubmit={handleFormSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             <div>
-              <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
+              <label
+                htmlFor="inquiry-name"
+                className="block text-xs font-bold uppercase tracking-wider text-stone-800 mb-1.5"
+              >
                 Full Name*
               </label>
               <input
+                id="inquiry-name"
                 type="text"
                 required
+                disabled={isSubmitting}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full h-10 sm:h-11 px-3 border border-gray-300 focus:border-black focus:outline-none text-xs sm:text-sm transition-colors bg-white rounded-none"
+                className="w-full h-11 px-3.5 border border-stone-300 rounded-lg focus:border-hiwi-primary focus:outline-none text-sm transition-colors bg-white text-hiwi-dark disabled:opacity-60"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
+              <label
+                htmlFor="inquiry-phone"
+                className="block text-xs font-bold uppercase tracking-wider text-stone-800 mb-1.5"
+              >
                 Phone Number*
               </label>
               <input
+                id="inquiry-phone"
                 type="tel"
                 required
+                disabled={isSubmitting}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full h-10 sm:h-11 px-3 border border-gray-300 focus:border-black focus:outline-none text-xs sm:text-sm transition-colors bg-white rounded-none"
+                className="w-full h-11 px-3.5 border border-stone-300 rounded-lg focus:border-hiwi-primary focus:outline-none text-sm transition-colors bg-white text-hiwi-dark tabular-nums disabled:opacity-60"
               />
             </div>
           </div>
 
-          {/* Row 2: Event Date (Custom Calendar Design) & Email - Balanced 2-column grid */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             {/* Custom Calendar Picker */}
             <div className="relative">
-              <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
+              <span className="block text-xs font-bold uppercase tracking-wider text-stone-800 mb-1.5">
                 Event Date*
-              </label>
-              
+              </span>
+
               <button
                 type="button"
+                disabled={isSubmitting}
                 onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-                className={`w-full h-10 sm:h-11 px-2.5 sm:px-3 border ${
-                  dateError ? 'border-red-500' : 'border-gray-300 hover:border-gray-400 focus:border-black'
-                } bg-white flex items-center justify-between text-left text-xs sm:text-sm transition-colors rounded-none cursor-pointer`}
+                className={`w-full h-11 px-3.5 border rounded-lg ${
+                  dateError
+                    ? 'border-red-600 bg-red-50/40 animate-error-nudge'
+                    : 'border-stone-300 hover:border-stone-400 focus:border-hiwi-primary bg-white'
+                } flex items-center justify-between text-left text-sm transition-colors cursor-pointer disabled:opacity-60`}
                 aria-expanded={isCalendarOpen}
                 aria-label="Select Event Date"
               >
-                <span className={formData.date ? 'text-black font-semibold truncate' : 'text-gray-400'}>
+                <span className={formData.date ? 'text-hiwi-dark font-semibold truncate tabular-nums' : 'text-stone-500'}>
                   {formData.date ? formatDisplayDate(formData.date) : 'Select Date'}
                 </span>
-                <CalendarIcon className="w-4 h-4 text-gray-600 shrink-0 ml-1" />
+                <CalendarIcon className="w-4 h-4 text-stone-600 shrink-0 ml-2" strokeWidth={1.75} />
               </button>
 
-              {/* Date validation error alert */}
               {dateError && (
-                <div className="absolute -bottom-4 left-0 flex items-center gap-1 text-[9px] text-red-600 font-medium">
-                  <AlertCircle className="w-2.5 h-2.5" />
-                  <span>Please pick a date</span>
+                <div className="mt-1.5 flex items-center gap-1.5 text-xs text-red-700 font-medium animate-feedback-in">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" strokeWidth={1.75} />
+                  <span>Please pick an event date</span>
                 </div>
               )}
 
-              {/* Calendar Popup Dropdown */}
+              {/* Calendar Popup Dropdown (outer rounded-xl - p-2 (8px) => rounded (4px) inner cells) */}
               {isCalendarOpen && (
                 <>
-                  {/* Backdrop to close on click outside */}
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setIsCalendarOpen(false)} 
-                    aria-hidden="true" 
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setIsCalendarOpen(false)}
+                    aria-hidden="true"
                   />
-                  
-                  <div className="absolute top-[calc(100%+4px)] left-0 z-50 w-68 sm:w-72 bg-white border-2 border-black shadow-2xl p-2.5 sm:p-3 animate-in fade-in-50 duration-150">
-                    {/* Header: Month / Year with arrows */}
-                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+
+                  <div className="absolute top-[calc(100%+6px)] left-0 z-50 w-72 bg-white border border-stone-300 rounded-xl shadow-warm-lg p-2 animate-feedback-in">
+                    {/* Month / Year Header */}
+                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-hiwi-border">
                       <button
                         type="button"
                         onClick={handlePrevMonth}
-                        className="p-1 hover:bg-gray-100 text-gray-700 transition-colors"
+                        className="p-1.5 rounded hover:bg-hiwi-stone text-stone-700 transition-colors"
                         aria-label="Previous Month"
                       >
-                        <ChevronLeft className="w-4 h-4" />
+                        <ChevronLeft className="w-4 h-4" strokeWidth={1.75} />
                       </button>
-                      <span className="text-xs font-bold uppercase tracking-wider text-black">
+                      <span className="text-xs font-bold uppercase tracking-wider text-hiwi-dark tabular-nums">
                         {monthNames[calendarMonth]} {calendarYear}
                       </span>
                       <button
                         type="button"
                         onClick={handleNextMonth}
-                        className="p-1 hover:bg-gray-100 text-gray-700 transition-colors"
+                        className="p-1.5 rounded hover:bg-hiwi-stone text-stone-700 transition-colors"
                         aria-label="Next Month"
                       >
-                        <ChevronRight className="w-4 h-4" />
+                        <ChevronRight className="w-4 h-4" strokeWidth={1.75} />
                       </button>
                     </div>
 
                     {/* Weekday Labels */}
                     <div className="grid grid-cols-7 gap-1 text-center mb-1">
                       {dayNames.map((d) => (
-                        <span key={d} className="text-[10px] font-bold uppercase text-gray-400 py-0.5">
+                        <span key={d} className="text-[11px] font-bold uppercase text-stone-600 py-0.5">
                           {d}
                         </span>
                       ))}
                     </div>
 
                     {/* Days Grid */}
-                    <div className="grid grid-cols-7 gap-1 text-center">
-                      {/* Empty slots before first day */}
+                    <div className="grid grid-cols-7 gap-1 text-center tabular-nums">
                       {Array.from({ length: firstDayOfWeek }).map((_, i) => (
-                        <div key={`empty-${i}`} className="h-6 w-6 sm:h-7 sm:w-7" />
+                        <div key={`empty-${i}`} className="h-7 w-7" />
                       ))}
 
-                      {/* Month Days */}
                       {Array.from({ length: daysInMonth }).map((_, i) => {
                         const day = i + 1;
                         const disabled = isDayDisabled(day);
@@ -302,14 +333,14 @@ export default function InquiryForm({
                             type="button"
                             disabled={disabled}
                             onClick={() => handleSelectDay(day)}
-                            className={`h-6 w-6 sm:h-7 sm:w-7 mx-auto flex items-center justify-center text-[11px] sm:text-xs transition-colors rounded-none ${
+                            className={`h-7 w-7 mx-auto flex items-center justify-center text-xs transition-colors rounded ${
                               selected
-                                ? 'bg-black text-white font-black'
+                                ? 'bg-hiwi-primary text-white font-extrabold'
                                 : disabled
-                                ? 'text-gray-300 cursor-not-allowed'
+                                ? 'text-stone-300 cursor-not-allowed'
                                 : isTodayDate
-                                ? 'border border-hiwi-primary text-hiwi-primary font-bold hover:bg-gray-100'
-                                : 'text-gray-800 hover:bg-gray-100 font-medium'
+                                ? 'border border-hiwi-primary text-hiwi-primary font-bold hover:bg-hiwi-cream'
+                                : 'text-stone-800 hover:bg-hiwi-stone font-medium'
                             }`}
                           >
                             {day}
@@ -318,13 +349,13 @@ export default function InquiryForm({
                       })}
                     </div>
 
-                    {/* Quick helper buttons */}
-                    <div className="mt-2.5 pt-2 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider">
+                    {/* Quick Helpers */}
+                    <div className="mt-2 pt-2 border-t border-hiwi-border flex items-center justify-between text-xs font-bold uppercase tracking-wider px-1">
                       <button
                         type="button"
                         onClick={() => {
                           const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-                          setFormData(prev => ({ ...prev, date: todayStr }));
+                          setFormData((prev) => ({ ...prev, date: todayStr }));
                           setDateError(false);
                           setIsCalendarOpen(false);
                         }}
@@ -336,10 +367,10 @@ export default function InquiryForm({
                         <button
                           type="button"
                           onClick={() => {
-                            setFormData(prev => ({ ...prev, date: '' }));
+                            setFormData((prev) => ({ ...prev, date: '' }));
                             setIsCalendarOpen(false);
                           }}
-                          className="text-gray-400 hover:text-black"
+                          className="text-stone-600 hover:text-hiwi-dark"
                         >
                           Clear
                         </button>
@@ -350,52 +381,86 @@ export default function InquiryForm({
               )}
             </div>
 
-            {/* Email Field without placeholder */}
             <div>
-              <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-                Email <span className="text-gray-400 font-normal lowercase">(optional)</span>
+              <label
+                htmlFor="inquiry-email"
+                className="block text-xs font-bold uppercase tracking-wider text-stone-800 mb-1.5"
+              >
+                Your Email (Optional)
               </label>
               <input
+                id="inquiry-email"
                 type="email"
+                disabled={isSubmitting}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full h-10 sm:h-11 px-3 border border-gray-300 focus:border-black focus:outline-none text-xs sm:text-sm transition-colors bg-white rounded-none"
+                className="w-full h-11 px-3.5 border border-stone-300 rounded-lg focus:border-hiwi-primary focus:outline-none text-sm transition-colors bg-white text-hiwi-dark disabled:opacity-60"
               />
             </div>
           </div>
 
-          {/* Row 3: Event Details Textarea - ONLY this field retains a friendly caption */}
           <div>
-            <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-              Event Details*
+            <label
+              htmlFor="inquiry-details"
+              className="block text-xs font-bold uppercase tracking-wider text-stone-800 mb-1.5"
+            >
+              Event Type, Sub-City &amp; Estimated Guests*
             </label>
             <textarea
-              rows={2}
+              id="inquiry-details"
               required
-              placeholder="Tell us about your event (guest count, location, or menu preferences)..."
+              rows={3}
+              disabled={isSubmitting}
               value={formData.details}
               onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-              className="w-full p-2.5 sm:p-3 border border-gray-300 focus:border-black focus:outline-none text-xs sm:text-sm transition-colors bg-white rounded-none resize-none h-16 sm:h-20 placeholder:text-gray-400 placeholder:font-light"
+              className="w-full p-3.5 border border-stone-300 rounded-lg focus:border-hiwi-primary focus:outline-none text-sm transition-colors resize-none bg-white text-hiwi-dark disabled:opacity-60"
             />
           </div>
 
-          {/* Row 4: Submit Button */}
           <div className="pt-1">
             <button
               type="submit"
-              className="w-full h-11 sm:h-12 bg-black hover:bg-gray-800 active:bg-hiwi-primary text-white font-extrabold uppercase text-xs sm:text-sm tracking-[0.2em] transition-colors shadow-md cursor-pointer flex items-center justify-center"
+              disabled={isSubmitting}
+              className="w-full h-12 rounded-lg bg-hiwi-primary hover:bg-hiwi-hover active:scale-[0.99] text-white font-extrabold uppercase text-xs sm:text-sm tracking-wider transition-all shadow-warm cursor-pointer flex items-center justify-center gap-2 disabled:opacity-80 disabled:cursor-wait"
             >
-              SUBMIT INQUIRY
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" strokeWidth={2} />
+                  <span>SENDING INQUIRY...</span>
+                </>
+              ) : (
+                <>
+                  <span>SUBMIT EVENT INQUIRY</span>
+                </>
+              )}
             </button>
-          </div>
-
-          {/* Fast Response Assurance */}
-          <div className="flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] text-gray-500 font-medium text-center pt-0.5">
-            <Clock className="w-3 h-3 text-hiwi-primary shrink-0" />
-            <span>Guaranteed callback or Telegram reply within 24 hours</span>
           </div>
         </form>
       )}
+
+      {/* Quick Contacts */}
+      <div className="mt-5 pt-4 border-t border-hiwi-border text-xs text-stone-700 flex flex-wrap items-center justify-between gap-2">
+        <a
+          href="tel:+251963138123"
+          className="inline-flex items-center gap-1.5 hover:text-hiwi-primary font-bold transition-colors tabular-nums"
+        >
+          <Phone className="w-3.5 h-3.5 text-hiwi-primary" strokeWidth={1.75} />
+          <span>0963 138 123</span>
+        </a>
+        <a
+          href="https://t.me/hiwicatering"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 hover:text-hiwi-primary font-bold transition-colors"
+        >
+          <Send className="w-3.5 h-3.5 text-hiwi-primary" strokeWidth={1.75} />
+          <span>@hiwicatering</span>
+        </a>
+        <span className="inline-flex items-center gap-1.5 text-stone-600 tabular-nums">
+          <Clock className="w-3.5 h-3.5 text-hiwi-primary" strokeWidth={1.75} />
+          <span>24h Quote Response</span>
+        </span>
+      </div>
     </div>
   );
 }

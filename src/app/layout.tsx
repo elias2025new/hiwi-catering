@@ -85,7 +85,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className={`${poppins.className} min-h-screen flex flex-col font-sans antialiased bg-white text-gray-900 selection:bg-hiwi-100 selection:text-hiwi-primary`}>
+      <body className={`${poppins.className} min-h-screen flex flex-col font-sans antialiased bg-hiwi-cream text-hiwi-dark selection:bg-hiwi-100 selection:text-hiwi-primary`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

@@ -146,7 +146,7 @@ export default async function LocationDetailPage({
   };
 
   return (
-    <div className="bg-white text-gray-900 font-sans selection:bg-black selection:text-white">
+    <div className="bg-hiwi-cream text-hiwi-dark font-sans selection:bg-hiwi-primary selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
@@ -157,78 +157,77 @@ export default async function LocationDetailPage({
       />
 
       {/* Breadcrumb Bar */}
-      <div className="bg-gray-50 border-b border-gray-200 py-3 text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 uppercase tracking-wider text-[11px] font-medium">
-          <Link href="/" className="hover:text-black transition-colors">
+      <div className="bg-hiwi-stone border-b border-hiwi-border py-3 text-xs text-stone-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 uppercase tracking-wider text-[11px] font-semibold">
+          <Link href="/" className="hover:text-hiwi-primary transition-colors">
             Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <Link href="/locations" className="hover:text-black transition-colors">
+          <ChevronRight className="w-3.5 h-3.5 text-stone-400" strokeWidth={1.75} />
+          <Link href="/locations" className="hover:text-hiwi-primary transition-colors">
             Locations
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <span className="text-black font-bold">{location.name}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-stone-400" strokeWidth={1.75} />
+          <span className="text-hiwi-dark font-bold">{location.name}</span>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="py-14 sm:py-20 bg-white border-b border-gray-200">
+      <section className="py-14 sm:py-20 bg-white border-b border-hiwi-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-hiwi-primary block mb-2">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-hiwi-amber block mb-2.5">
                   {location.subCityLabel}
                 </span>
-                <h1 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-[0.1em] text-black leading-tight">
+                <h1 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-hiwi-dark leading-tight text-balance">
                   {location.h1}
                 </h1>
-                <div className="w-12 h-0.5 bg-black my-4" />
               </div>
 
-              <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
                 {location.localSummary}
               </p>
 
               {/* Local Logistics Bar */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-gray-200 py-5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-hiwi-border py-5">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 block">
                     Hot Kitchen Transit
                   </span>
-                  <span className="text-sm font-black uppercase text-black block mt-1">
+                  <span className="text-sm font-black uppercase text-hiwi-dark block mt-1 tabular-nums">
                     {location.dispatchTime}
                   </span>
                 </div>
-                <div className="sm:border-x border-gray-200 sm:px-4">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+                <div className="sm:border-x border-hiwi-border sm:px-4">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 block">
                     Starting Rate
                   </span>
-                  <span className="text-sm font-black uppercase text-black block mt-1">
+                  <span className="text-sm font-black uppercase text-hiwi-dark block mt-1 tabular-nums">
                     From 750 ETB / Guest
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 block">
                     Route Access
                   </span>
-                  <span className="text-sm font-black uppercase text-black block mt-1">
+                  <span className="text-sm font-black uppercase text-hiwi-dark block mt-1 tabular-nums">
                     {location.distanceFromKitchen}
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-1">
                 <a
                   href="tel:+251963138123"
-                  className="py-3.5 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors inline-flex items-center justify-center gap-2"
+                  className="py-3.5 px-6 bg-hiwi-primary text-white hover:bg-hiwi-hover rounded-lg text-xs font-extrabold uppercase tracking-[0.16em] shadow-warm transition-colors inline-flex items-center justify-center gap-2 tabular-nums whitespace-nowrap"
                 >
-                  <PhoneCall className="w-4 h-4" />
+                  <PhoneCall className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                   <span>Call: 0963 138 123</span>
                 </a>
                 <Link
                   href="/inquiry"
-                  className="py-3.5 px-8 border-2 border-black text-black hover:bg-black hover:text-white text-xs font-extrabold uppercase tracking-[0.2em] transition-colors inline-flex items-center justify-center"
+                  className="py-3.5 px-6 border-2 border-hiwi-dark text-hiwi-dark hover:bg-hiwi-dark hover:text-white rounded-lg text-xs font-extrabold uppercase tracking-[0.16em] transition-colors inline-flex items-center justify-center whitespace-nowrap"
                 >
                   Book {location.shortName} Event
                 </Link>
@@ -236,46 +235,48 @@ export default async function LocationDetailPage({
                   href="https://t.me/hiwicatering"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3.5 px-6 border-2 border-gray-300 text-black hover:border-black text-xs font-extrabold uppercase tracking-[0.2em] transition-colors inline-flex items-center justify-center gap-2"
+                  className="py-3.5 px-6 border border-hiwi-border bg-hiwi-stone text-hiwi-dark hover:border-hiwi-dark rounded-lg text-xs font-bold uppercase tracking-[0.16em] transition-colors inline-flex items-center justify-center gap-2 whitespace-nowrap"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                   <span>Telegram</span>
                 </a>
               </div>
             </div>
 
             {/* Right Column: Neighborhood & Kitchen Proximity Box */}
-            <div className="lg:col-span-5 bg-gray-50 border border-gray-200 p-6 sm:p-8 space-y-6">
+            <div className="lg:col-span-5 bg-hiwi-stone border border-hiwi-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-card">
               <div>
-                <div className="flex items-center gap-2 text-black mb-2">
-                  <MapPin className="w-4 h-4 text-hiwi-primary shrink-0" />
-                  <h2 className="text-sm font-black uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-hiwi-dark mb-3">
+                  <MapPin className="w-4 h-4 text-hiwi-primary shrink-0" strokeWidth={1.75} />
+                  <h2 className="text-sm font-black uppercase tracking-wider">
                     {location.shortName} Neighborhoods Covered
                   </h2>
                 </div>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs text-gray-700">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs text-stone-700">
                   {location.neighborhoodsCovered.map((zone) => (
                     <li key={zone} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-black shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-hiwi-primary shrink-0 mt-0.5" strokeWidth={1.75} />
                       <span>{zone}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="border-t border-gray-200 pt-5 space-y-2">
-                <h3 className="text-xs font-black uppercase tracking-widest text-black">
+              <div className="border-t border-hiwi-border pt-5 space-y-2">
+                <h3 className="text-xs font-black uppercase tracking-wider text-hiwi-dark">
                   Venue &amp; Dispatch Logistics
                 </h3>
-                <p className="text-xs text-gray-600 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                   {location.venueLogisticsNote}
                 </p>
               </div>
 
-              <div className="border-t border-gray-200 pt-5 flex flex-col gap-2.5 text-xs">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Clock className="w-3.5 h-3.5 text-black shrink-0" />
-                  <span>Dispatched from Summit Fiyel Bet (XVW2+PCH)</span>
+              <div className="border-t border-hiwi-border pt-5 flex flex-col gap-2.5 text-xs">
+                <div className="flex items-center gap-2 text-stone-700">
+                  <Clock className="w-3.5 h-3.5 text-hiwi-dark shrink-0" strokeWidth={1.75} />
+                  <span>
+                    Dispatched from Summit Fiyel Bet (<span className="font-mono font-semibold text-hiwi-dark">XVW2+PCH</span>)
+                  </span>
                 </div>
                 <a
                   href="https://maps.app.goo.gl/HKTMRDEuVvdDDnnN6"
@@ -283,8 +284,10 @@ export default async function LocationDetailPage({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-hiwi-primary font-bold uppercase tracking-wider text-[11px] hover:underline"
                 >
-                  <span>Verify Kitchen Pin on Google Maps (8.996818, 38.851122)</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <span>
+                    Verify Kitchen Pin on Google Maps (<span className="font-mono">8.996818, 38.851122</span>)
+                  </span>
+                  <ExternalLink className="w-3 h-3" strokeWidth={1.75} />
                 </a>
               </div>
             </div>
@@ -293,16 +296,15 @@ export default async function LocationDetailPage({
       </section>
 
       {/* Local Strengths & Event Types */}
-      <section className="py-14 sm:py-16 bg-gray-50 border-b border-gray-200 px-4 sm:px-6 lg:px-8">
+      <section className="py-14 sm:py-16 bg-hiwi-stone border-b border-hiwi-border px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {location.highlights.map((item) => (
-              <div key={item.title} className="bg-white border border-gray-200 p-7 space-y-3">
-                <span className="w-8 h-0.5 bg-black block" />
-                <h2 className="text-base font-black uppercase tracking-wider text-black">
+              <div key={item.title} className="bg-white border border-hiwi-border rounded-2xl p-6 sm:p-7 space-y-3 shadow-card">
+                <h2 className="text-base font-black uppercase tracking-tight text-hiwi-dark">
                   {item.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                   {item.detail}
                 </p>
               </div>
@@ -310,39 +312,37 @@ export default async function LocationDetailPage({
           </div>
 
           {/* AEO / Local Package Summary Box */}
-          <div className="bg-white border border-gray-200 p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="bg-white border border-hiwi-border rounded-2xl p-6 sm:p-8 shadow-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-3">
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-hiwi-primary block">
-                Menu &amp; Package Recommendation • {location.shortName}
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-hiwi-amber block">
+                Menu &amp; Package Recommendation &bull; {location.shortName}
               </span>
-              <h2 className="text-lg sm:text-2xl font-black uppercase tracking-tight text-black">
+              <h2 className="text-lg sm:text-2xl font-black uppercase tracking-tight text-hiwi-dark text-balance">
                 POPULAR EVENTS &amp; TIERS FOR {location.shortName.toUpperCase()} HOSTS
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                 {location.recommendedTierNote}
               </p>
-              <div className="flex flex-wrap gap-2 pt-2">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                 {location.popularEvents.map((ev) => (
-                  <span
-                    key={ev}
-                    className="px-3 py-1 bg-gray-100 border border-gray-200 text-[11px] font-bold uppercase tracking-wider text-gray-800"
-                  >
-                    {ev}
-                  </span>
+                  <li key={ev} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-hiwi-dark">
+                    <CheckCircle2 className="w-4 h-4 text-hiwi-primary shrink-0" strokeWidth={1.75} />
+                    <span>{ev}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
             <div className="lg:col-span-4 flex flex-col gap-3">
               <Link
                 href="/pricing"
-                className="py-3.5 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] text-center inline-flex items-center justify-center gap-2"
+                className="py-3.5 px-6 bg-hiwi-primary text-white hover:bg-hiwi-hover rounded-lg text-xs font-extrabold uppercase tracking-[0.16em] text-center shadow-warm transition-colors inline-flex items-center justify-center gap-2"
               >
-                <Utensils className="w-4 h-4" />
+                <Utensils className="w-4 h-4" strokeWidth={1.75} />
                 <span>Compare Full ETB Prices</span>
               </Link>
               <Link
                 href="/services"
-                className="py-3 px-6 border border-black text-black hover:bg-black hover:text-white text-xs font-bold uppercase tracking-[0.2em] text-center"
+                className="py-3 px-6 border-2 border-hiwi-dark text-hiwi-dark hover:bg-hiwi-dark hover:text-white rounded-lg text-xs font-bold uppercase tracking-[0.16em] transition-colors text-center"
               >
                 Explore All Event Types
               </Link>
@@ -359,7 +359,7 @@ export default async function LocationDetailPage({
       />
 
       {/* Inquiry Form */}
-      <section className="py-16 bg-gray-50 border-t border-gray-200 px-4 sm:px-6">
+      <section className="py-16 bg-hiwi-stone border-t border-hiwi-border px-4 sm:px-6">
         <div className="max-w-xl mx-auto">
           <InquiryForm
             title={`REQUEST A QUOTE FOR ${location.shortName.toUpperCase()}`}
@@ -369,9 +369,9 @@ export default async function LocationDetailPage({
       </section>
 
       {/* Other Neighborhood Corridors */}
-      <section className="py-12 bg-white border-t border-gray-200 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 bg-white border-t border-hiwi-border px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center space-y-5">
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-gray-500 block">
+          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-stone-600 block">
             Other Addis Ababa &amp; Addis Abeba Service Zones
           </span>
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -379,7 +379,7 @@ export default async function LocationDetailPage({
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="py-2.5 px-5 border border-gray-300 hover:border-black hover:bg-black hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                className="py-2.5 px-5 border border-hiwi-border bg-hiwi-cream text-hiwi-dark hover:border-hiwi-dark hover:bg-hiwi-dark hover:text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors"
               >
                 {loc.name}
               </Link>

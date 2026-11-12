@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Phone, Send, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
+import { ChevronRight, Phone, Send, MapPin } from 'lucide-react';
 import InquiryForm from '@/components/InquiryForm';
 
 export const metadata: Metadata = {
   title: {
     absolute: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
   },
-  description: 'Request a custom catering quote in Addis Ababa & Addis Abeba. Weddings, birthdays, graduations & corporate events in Bole, Ayat & Summit. Call 0963 138 123.',
+  description:
+    'Request a custom catering quote in Addis Ababa & Addis Abeba. Weddings, birthdays, graduations & corporate events in Bole, Ayat & Summit. Call 0963 138 123.',
   alternates: {
     canonical: 'https://hiwicatering.com/inquiry',
   },
@@ -18,23 +19,25 @@ export const metadata: Metadata = {
     'catering in addis abeba',
     'wedding catering booking Ethiopia',
     'catering quote Addis Ababa',
-    'Hiwi Catering inquiry form'
+    'Hiwi Catering inquiry form',
   ],
   openGraph: {
     title: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
-    description: 'Get in touch for your upcoming event in Addis Ababa & Addis Abeba. We respond within 24 hours with custom menu options.',
+    description:
+      'Get in touch for your upcoming event in Addis Ababa & Addis Abeba. We respond within 24 hours with custom menu options.',
     url: 'https://hiwicatering.com/inquiry',
     siteName: 'Hiwi Catering Services',
     locale: 'en_US',
     type: 'website',
-    images: ['/images/contact-bg.jpg']
+    images: ['/images/contact-bg.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Book Event Catering Inquiry Addis Ababa | Hiwi Catering',
-    description: 'Submit your event catering request for weddings, birthdays & corporate banquets in Addis Ababa.',
-    images: ['/images/contact-bg.jpg']
-  }
+    description:
+      'Submit your event catering request for weddings, birthdays & corporate banquets in Addis Ababa.',
+    images: ['/images/contact-bg.jpg'],
+  },
 };
 
 export default function InquiryPage() {
@@ -46,15 +49,15 @@ export default function InquiryPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://hiwicatering.com'
+        item: 'https://hiwicatering.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Event Inquiry',
-        item: 'https://hiwicatering.com/inquiry'
-      }
-    ]
+        item: 'https://hiwicatering.com/inquiry',
+      },
+    ],
   };
 
   return (
@@ -65,83 +68,77 @@ export default function InquiryPage() {
       />
 
       {/* Breadcrumb Bar */}
-      <div className="bg-gray-50 border-b border-gray-200 py-2.5 text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
-          <Link href="/" className="hover:text-hiwi-primary transition-colors">Home</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <span className="text-black font-semibold uppercase tracking-wider">Event Inquiry Form</span>
+      <div className="bg-hiwi-stone border-b border-hiwi-border py-2.5 text-xs text-stone-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 uppercase tracking-wider font-medium">
+          <Link href="/" className="hover:text-hiwi-primary transition-colors">
+            Home
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-stone-500" strokeWidth={1.75} />
+          <span className="text-hiwi-dark font-bold">Event Inquiry Form</span>
         </div>
       </div>
 
-      {/* Main Form Section - Sized to fit in single mobile screen */}
-      <section className="relative min-h-[calc(100dvh-130px)] flex flex-col justify-center items-center py-4 px-3 sm:py-12 sm:px-6 overflow-hidden">
-        {/* Background Image with Dark Contrast Tint */}
+      {/* Main Form Section */}
+      <section className="relative min-h-[calc(100dvh-130px)] flex flex-col justify-center items-center py-10 px-4 sm:py-16 sm:px-6 overflow-hidden bg-hiwi-dark">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/contact-bg.jpg"
-            alt="Hiwi Catering Event Atmosphere Addis Ababa"
+            alt="Hiwi Catering Traditional Buna Coffee Ceremony and Reception Setup in Addis Ababa"
             fill
             sizes="100vw"
             priority
-            className="object-cover object-center"
+            className="object-cover object-center opacity-35"
           />
-          <div className="absolute inset-0 bg-black/75 backdrop-blur-[1px]" />
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col justify-center">
-          <div className="text-center mb-4 sm:mb-6 space-y-1.5">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-hiwi-gold block">
-              Addis Ababa &amp; Addis Abeba • Packages From 750 ETB/Guest
-            </span>
-            <h1 className="text-xl sm:text-3xl font-black uppercase tracking-[0.12em] text-white leading-tight drop-shadow">
+        <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col justify-center space-y-6">
+          <div className="text-center space-y-2">
+            <h1 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white leading-tight text-balance">
               REQUEST YOUR EVENT CATERING QUOTE
             </h1>
-            <p className="text-[11px] sm:text-xs text-gray-200 font-light max-w-md mx-auto">
-              Hot Habesha buffets &amp; setups dispatched from Summit Fiyel Bet across Bole, Ayat, CMC, and all 11 sub-cities.
+            <p className="text-xs sm:text-sm text-stone-200 max-w-md mx-auto leading-relaxed tabular-nums">
+              Hot Habesha buffets starting at 750 ETB per guest, dispatched from Summit Fiyel Bet across Bole, Ayat,
+              CMC &amp; all 11 sub-cities.
             </p>
           </div>
 
-          {/* Elevated Johnny Burke Inquiry Card */}
-          <InquiryForm 
-            title="READY TO MAKE YOUR NEXT EVENT PERFECT?"
-            subtitle="Fill out this quick form & our team will contact you within 24 hours"
+          <InquiryForm
+            title="GET A CUSTOM CATERING QUOTE IN 24 HOURS"
+            subtitle="Share your event date, guest count, and Addis Ababa sub-city."
           />
 
-          {/* Direct Support & Trust Strip Under Form */}
-          <div className="mt-3 sm:mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-white/90 text-[10px] sm:text-xs tracking-wider uppercase font-medium text-center">
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3 h-3 text-hiwi-gold" />
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-stone-200 text-xs font-medium text-center tabular-nums">
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-hiwi-gold" strokeWidth={1.75} />
               <span>Summit Fiyel Bet</span>
             </span>
-            <span className="text-white/40">•</span>
-            <a 
-              href="tel:+251963138123" 
-              className="flex items-center gap-1 hover:text-hiwi-gold transition-colors font-bold"
+            <span className="text-stone-600" aria-hidden="true">|</span>
+            <a
+              href="tel:+251963138123"
+              className="inline-flex items-center gap-1.5 hover:text-hiwi-gold transition-colors font-bold"
             >
-              <Phone className="w-3 h-3 text-hiwi-gold" />
+              <Phone className="w-3.5 h-3.5 text-hiwi-gold" strokeWidth={1.75} />
               <span>0963 138 123</span>
             </a>
-            <span className="text-white/40">•</span>
-            <a 
-              href="https://t.me/hiwicatering" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-1 hover:text-hiwi-gold transition-colors"
+            <span className="text-stone-600" aria-hidden="true">|</span>
+            <a
+              href="https://t.me/hiwicatering"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-hiwi-gold transition-colors"
             >
-              <Send className="w-3 h-3 text-hiwi-gold" />
+              <Send className="w-3.5 h-3.5 text-hiwi-gold" strokeWidth={1.75} />
               <span>@hiwicatering</span>
             </a>
-            <span className="text-white/40">•</span>
+            <span className="text-stone-600" aria-hidden="true">|</span>
             <Link href="/pricing" className="hover:text-hiwi-gold transition-colors underline underline-offset-2">
               750+ ETB Prices
             </Link>
-            <span className="text-white/40">•</span>
+            <span className="text-stone-600" aria-hidden="true">|</span>
             <Link href="/locations" className="hover:text-hiwi-gold transition-colors underline underline-offset-2">
               Bole &amp; Ayat Areas
             </Link>
           </div>
-
         </div>
       </section>
     </>

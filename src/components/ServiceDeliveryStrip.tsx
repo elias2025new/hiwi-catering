@@ -14,17 +14,19 @@ export default function ServiceDeliveryStrip({ serviceLabel }: ServiceDeliverySt
   ];
 
   return (
-    <section className="py-12 bg-gray-50 border-y border-gray-200 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-6">
-        <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-hiwi-primary block">
-            Local Catering Near You • Addis Ababa &amp; Addis Abeba
-          </span>
-          <h2 className="text-lg sm:text-2xl font-black uppercase tracking-[0.12em] text-black">
-            FAST {serviceLabel.toUpperCase()} DELIVERY ACROSS ADDIS
+    <section className="py-14 bg-hiwi-stone border-y border-hiwi-border px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto space-y-8">
+        <div className="text-center max-w-3xl mx-auto space-y-2.5">
+          <h2 className="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+            FAST {serviceLabel.toUpperCase()} DELIVERY ACROSS ADDIS ABABA &amp; ADDIS ABEBA
           </h2>
-          <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-            Prepared fresh at our Summit Fiyel Bet kitchen (Plus Code XVW2+PCH) and delivered hot with stainless chafing warmers to every Addis Ababa &amp; Addis Abeba neighborhood.
+          <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed">
+            Prepared fresh at our Summit Fiyel Bet kitchen (Plus Code{' '}
+            <code className="font-mono text-xs bg-white px-1.5 py-0.5 rounded border border-hiwi-border">
+              XVW2+PCH
+            </code>
+            ) and delivered piping hot with stainless chafing warmers to every Addis Ababa &amp; Addis Abeba
+            neighborhood.
           </p>
         </div>
 
@@ -33,16 +35,23 @@ export default function ServiceDeliveryStrip({ serviceLabel }: ServiceDeliverySt
             <Link
               key={z.href}
               href={z.href}
-              className="bg-white border border-gray-200 hover:border-black p-4 flex items-center justify-between gap-3 transition-all group"
+              className="bg-white border border-hiwi-border hover:border-hiwi-primary rounded-xl p-4 flex items-center justify-between gap-3 transition-all shadow-card hover:shadow-card-hover group"
             >
-              <div>
-                <span className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-black group-hover:text-hiwi-primary transition-colors">
-                  <MapPin className="w-3.5 h-3.5 shrink-0" />
-                  <span>{z.name}</span>
-                </span>
-                <span className="text-[11px] font-mono text-gray-500 block mt-1">{z.timing}</span>
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 rounded-lg bg-hiwi-cream border border-hiwi-border flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-hiwi-primary" strokeWidth={1.75} />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-xs font-extrabold uppercase tracking-wide text-hiwi-dark group-hover:text-hiwi-primary transition-colors block truncate">
+                    {z.name}
+                  </span>
+                  <span className="text-xs text-stone-600 block mt-0.5 tabular-nums">{z.timing}</span>
+                </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-black shrink-0" />
+              <ArrowRight
+                className="w-4 h-4 text-stone-500 group-hover:text-hiwi-primary transition-colors shrink-0"
+                strokeWidth={1.75}
+              />
             </Link>
           ))}
         </div>

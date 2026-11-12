@@ -1,20 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary-orange: #F25C05;
-  --primary-hover: #dc4e02;
-  --dark-slate: #111827;
-  --warm-gold: #F59E0B;
-  --cream-bg: #FFFBF5;
+  --hiwi-primary: #D03B1E;
+  --hiwi-primary-hover: #B22F16;
+  --hiwi-gold: #EAA228;
+  --hiwi-dark: #1C1917;
+  --hiwi-charcoal: #262220;
+  --hiwi-cream: #FFFBF5;
+  --hiwi-stone: #F5F0E8;
+  --hiwi-border: #E5DDD3;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: #1f2937;
-  background-color: #ffffff;
+  color: #1C1917;
+  background-color: #FFFBF5;
   font-family: var(--font-poppins), 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
@@ -26,22 +31,59 @@ textarea {
   font-family: inherit;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Balanced headline wrapping */
+.text-balance {
+  text-wrap: balance;
 }
 
-/* Custom food badges & decorative touches */
-.sunburst-badge {
-  clip-path: polygon(
-    50% 0%, 61% 15%, 78% 9%, 81% 27%, 98% 35%, 89% 50%, 98% 65%, 81% 73%, 
-    78% 91%, 61% 85%, 50% 100%, 39% 85%, 22% 91%, 19% 73%, 2% 65%, 11% 50%, 
-    2% 35%, 19% 27%, 22% 9%, 39% 15%
-  );
+/* Useful state transition animations */
+@keyframes feedbackIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorNudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-feedback-in {
+  animation: feedbackIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-error-nudge {
+  animation: errorNudge 0.28s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-feedback-in,
+  .animate-error-nudge {
+    animation: none;
+  }
 }
 
 /* Accessible focus ring */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid #F25C05;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #D03B1E;
   outline-offset: 2px;
 }

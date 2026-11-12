@@ -10,18 +10,22 @@ export default {
     extend: {
       colors: {
         hiwi: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          primary: '#F25C05', // Official Brand Orange from flyer
-          hover: '#dc4e02',
-          dark: '#111827',
-          charcoal: '#1f2937',
-          gold: '#F59E0B',
-          cream: '#FFFBF5',
+          50: '#FFF7ED',
+          100: '#FFEDD5',
+          200: '#FED7AA',
+          300: '#FDBA74',
+          400: '#FB923C',
+          500: '#E54E2A',
+          primary: '#D03B1E', // AA-compliant Berbere Terracotta primary CTA & brand text
+          hover: '#B22F16',
+          bright: '#F25C05',  // Accent highlight on dark bands
+          amber: '#9A3412',   // Warm dark-amber readable ink on cream/white
+          gold: '#EAA228',    // Ethiopian saffron gold accent on dark surfaces
+          dark: '#1C1917',    // Deep warm charcoal
+          charcoal: '#262220',
+          cream: '#FFFBF5',   // Warm hospitality canvas
+          stone: '#F5F0E8',   // Elevated muted warm surface
+          border: '#E5DDD3',  // Warm hairline border
         },
       },
       fontFamily: {
@@ -29,9 +33,11 @@ export default {
         poppins: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
       },
       boxShadow: {
-        'warm': '0 10px 30px -5px rgba(242, 92, 5, 0.15)',
-        'warm-lg': '0 20px 40px -10px rgba(242, 92, 5, 0.25)',
-      }
+        'warm': '0 10px 28px -6px rgba(208, 59, 30, 0.16)',
+        'warm-lg': '0 20px 40px -12px rgba(28, 25, 23, 0.18)',
+        'card': '0 2px 12px -2px rgba(28, 25, 23, 0.06)',
+        'card-hover': '0 16px 32px -10px rgba(28, 25, 23, 0.12)',
+      },
     },
   },
   plugins: [],

@@ -9,6 +9,7 @@ import {
   Leaf,
   Award,
   Utensils,
+  ArrowRight,
 } from 'lucide-react';
 import { CATERING_FAQS } from '@/data/faqs';
 import InquiryForm from '@/components/InquiryForm';
@@ -32,13 +33,14 @@ export const metadata: Metadata = {
     siteName: 'Hiwi Catering Services',
     locale: 'en_US',
     type: 'website',
-    images: ['/images/wedding-catering.jpg'],
+    images: ['/images/hero-bg.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Catering in Addis Ababa & Abeba | Hiwi Catering',
-    description: 'Weddings, graduations, birthdays & corporate catering across Bole, Ayat & Addis Ababa.',
-    images: ['/images/wedding-catering.jpg'],
+    description:
+      'Weddings, graduations, birthdays & corporate catering across Bole, Ayat & Addis Ababa.',
+    images: ['/images/hero-bg.jpg'],
   },
 };
 
@@ -57,364 +59,383 @@ export default function HomePage() {
   };
 
   return (
-    <div className="bg-white text-gray-900 font-sans selection:bg-black selection:text-white">
+    <div className="bg-hiwi-cream text-hiwi-dark font-sans selection:bg-hiwi-100 selection:text-hiwi-primary">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION (Johnny Burke Full-Screen Atmospheric Hero)                */}
+      {/* 1. FEATURED PRODUCT HERO (Unobscured Culinary Spread + Prominent CTA)     */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[75vh] sm:min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-8 pb-12 sm:py-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-bg.jpg"
-            alt="Hiwi Catering Service in Addis Ababa and Addis Abeba - Wedding, Buffet, and Event Catering"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center scale-105 transition-transform duration-1000"
-          />
-          <div className="absolute inset-0 bg-black/55 backdrop-blur-[0.5px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
-        </div>
+      <section className="bg-hiwi-cream border-b border-hiwi-border py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Clear Offer & Primary CTA */}
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[52px] font-black uppercase tracking-tight text-hiwi-dark leading-[1.1] text-balance">
+              CATERING SERVICE IN ADDIS ABABA &amp; ABEBA FOR WEDDINGS, EVENTS &amp; PARTIES
+            </h1>
 
-        <div className="relative z-10 max-w-4xl mx-auto space-y-4 sm:space-y-6 pt-0 sm:pt-4">
-          <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-white leading-[1.12] sm:leading-[1.08] font-sans drop-shadow-md">
-            CATERING SERVICE IN ADDIS ABABA &amp; ABEBA FOR WEDDINGS, EVENTS &amp; PARTIES
-          </h1>
-
-          <div className="space-y-3 max-w-xl mx-auto">
-            <p className="text-xs sm:text-base md:text-lg text-gray-200 font-normal leading-relaxed max-w-md sm:max-w-xl mx-auto drop-shadow">
-              Authentic Habesha banquets &amp; modern chafing buffets dispatched fresh from Summit Fiyel Bet across Bole, Ayat, CMC, and all 11 sub-cities.
+            <p className="text-base sm:text-lg text-stone-700 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Authentic Habesha Doro Wat, Kitfo, fasting Beyaynetu, and gleaming chafing dish buffets prepared fresh
+              at our Summit Fiyel Bet kitchen and delivered hot across Bole, Ayat, CMC, and all 11 sub-cities—starting
+              at <span className="font-bold text-hiwi-dark tabular-nums">750 ETB / guest</span>.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-0.5 text-[10px] sm:text-xs font-bold tracking-wider uppercase">
-              <span className="px-2.5 py-1 bg-black/45 backdrop-blur-sm rounded border border-white/15 text-gray-200 shadow-sm">
-                Weddings &amp; Events
-              </span>
-              <span className="px-2.5 py-1 bg-black/45 backdrop-blur-sm rounded border border-white/15 text-gray-200 shadow-sm">
-                100% Hot Buffets
-              </span>
-              <span className="px-2.5 py-1 bg-black/45 backdrop-blur-sm rounded border border-hiwi-gold/40 text-hiwi-gold shadow-sm font-black">
-                &ldquo;The Taste You Love!&rdquo;
-              </span>
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
+              <a
+                href="#inquiry-form"
+                className="w-full sm:w-auto px-8 py-4 rounded-lg bg-hiwi-primary hover:bg-hiwi-hover active:scale-[0.98] text-white font-extrabold uppercase text-xs sm:text-sm tracking-wider transition-all duration-200 shadow-warm text-center"
+              >
+                GET MY CUSTOM QUOTE
+              </a>
+
+              <a
+                href="tel:+251963138123"
+                className="w-full sm:w-auto px-7 py-4 rounded-lg border-2 border-hiwi-dark hover:bg-hiwi-dark hover:text-white text-hiwi-dark font-extrabold uppercase text-xs sm:text-sm tracking-wider transition-all duration-200 inline-flex items-center justify-center gap-2.5 text-center tabular-nums"
+                aria-label="Call Hiwi Catering at 0963 138 123"
+              >
+                <Phone className="w-4 h-4" strokeWidth={1.75} />
+                <span>0963 138 123</span>
+              </a>
             </div>
           </div>
 
-          <div className="pt-10 sm:pt-12 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
-            <a
-              href="#inquiry-form"
-              className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-white hover:bg-gray-100 text-black font-extrabold uppercase text-xs tracking-[0.2em] transition-all duration-200 shadow-lg text-center"
-            >
-              GET MY CUSTOM QUOTE
-            </a>
-
-            <a
-              href="tel:+251963138123"
-              className="w-full sm:w-auto px-8 py-3 sm:py-3.5 border-2 border-white hover:bg-white hover:text-black text-white font-extrabold uppercase text-xs tracking-[0.2em] transition-all duration-200 shadow-lg inline-flex items-center justify-center gap-2.5 text-center"
-              aria-label="Call Hiwi Catering at 0963 138 123"
-            >
-              <Phone className="w-4 h-4" />
-              <span>0963 138 123</span>
-            </a>
+          {/* Right Column: Enlarged Authentic Banquet Photography (outer rounded-2xl p-2 -> inner rounded-lg) */}
+          <div className="lg:col-span-6">
+            <div className="bg-white border border-hiwi-border rounded-2xl p-2 shadow-warm-lg">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/hero-bg.jpg"
+                  alt="Hiwi Catering Hot Stainless Chafing Dish Buffet with Doro Wat, Derek Tibs and Injera in Addis Ababa"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. STATS COUNTER STRIP (Johnny Burke Dark Band - 100% Verifiable Facts)  */}
+      {/* 2. STATS BAR (Consistent Icon Treatment & Tabular Figures)                */}
       {/* ========================================================================= */}
-      <section className="bg-[#1F2024] text-white py-10 px-4 sm:px-6 lg:px-8 border-y border-white/5">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-          <div className="pt-4 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-              25 - 1,500+
-            </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <Users className="w-4 h-4 text-hiwi-gold" />
-              <span>GUEST CAPACITY PER EVENT</span>
+      <section className="bg-hiwi-dark text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <Users className="w-5 h-5 text-hiwi-gold" strokeWidth={1.75} />
             </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">
+              25 – 1,500+
+            </span>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">
+              GUEST CAPACITY PER EVENT
+            </span>
           </div>
 
-          <div className="pt-6 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <Utensils className="w-5 h-5 text-hiwi-gold" strokeWidth={1.75} />
+            </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">
               750 ETB
             </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <Utensils className="w-4 h-4 text-hiwi-gold" />
-              <span>PACKAGES STARTING PER GUEST</span>
-            </div>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">
+              PACKAGES STARTING PER GUEST
+            </span>
           </div>
 
-          <div className="pt-6 md:pt-0 flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+          <div className="flex flex-col items-center space-y-2.5">
+            <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <MapPin className="w-5 h-5 text-hiwi-gold" strokeWidth={1.75} />
+            </div>
+            <span className="text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums">
               11
             </span>
-            <div className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-300 font-bold">
-              <MapPin className="w-4 h-4 text-hiwi-gold" />
-              <span>ADDIS SUB-CITIES COVERED</span>
+            <span className="text-xs uppercase tracking-wider text-stone-300 font-semibold">
+              ADDIS SUB-CITIES COVERED
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. FULL-SERVICE EVENT CATERING BY OCCASION                                */}
+      {/* ========================================================================= */}
+      <section className="bg-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-hiwi-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+              FULL-SERVICE WEDDING, CORPORATE &amp; PARTY CATERING
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed">
+              From Bole weddings and Melse ceremonies to Ayat graduations and Kazanchis seminars, every event receives
+              hot bain-marie warmers and attentive service across Addis Ababa &amp; Addis Abeba.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Weddings */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/wedding-catering.jpg"
+                  alt="Full-Service Wedding Catering Addis Ababa - Hiwi Catering"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  WEDDINGS &amp; MELSE BANQUETS
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Bespoke wedding tasting consultations, multi-line hot buffets, Agelgil setups, and uniformed staff for
+                  receptions from <span className="tabular-nums font-medium">100 to 1,500+</span> guests.
+                </p>
+                <Link
+                  href="/services/wedding-catering"
+                  className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  <span>EXPLORE WEDDING CATERING</span>
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.75} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 2: Corporate Events */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/corporate-catering.jpg"
+                  alt="Corporate Conference and Seminar Catering Addis Ababa - Hiwi Catering"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  CORPORATE &amp; SEMINAR BUFFETS
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Punctual morning coffee breaks, executive boxed meals, and hot mixed or fasting buffets for NGOs,
+                  embassies, and office meetings across Kazanchis and Bole.
+                </p>
+                <Link
+                  href="/services/showers-and-events"
+                  className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-hiwi-dark text-white hover:bg-stone-800 text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  <span>EXPLORE CORPORATE EVENTS</span>
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.75} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: Social Celebrations */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/social-catering.jpg"
+                  alt="Birthday Party, Graduation and Social Event Catering in Addis Ababa"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  BIRTHDAYS &amp; GRADUATIONS
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Abundant home-style wats, crisp sambusa finger food risers, and warm backyard tent buffets delivered
+                  hot to private compounds and halls.
+                </p>
+                <Link
+                  href="/services/birthday-catering"
+                  className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-hiwi-dark text-white hover:bg-stone-800 text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  <span>EXPLORE SOCIAL PARTIES</span>
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.75} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. CATERING FOR EVERY OCCASION (3 Column Cards)                           */}
-      {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-black">
-            CATERING FOR EVERY OCCASION
-          </h2>
-          <div className="w-12 h-0.5 bg-black mx-auto my-4" />
-          <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-            Whether you&apos;re planning a wedding in Bole, a family graduation in Ayat, or a corporate workshop in Kazanchis, we bring consistent culinary excellence to every celebration across Addis Ababa &amp; Addis Abeba.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {/* Card 1: Weddings */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/wedding-catering.jpg"
-                alt="Full-Service Wedding Catering Addis Ababa - Hiwi Catering"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                WEDDINGS
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                Your wedding deserves food and service that feel effortless and exceptional. As a full-service catering partner, we take care of every detail, so your day is joyful, memorable, and completely yours.
-              </p>
-              <Link
-                href="/services/wedding-catering"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                LEARN MORE
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 2: Corporate Events */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/corporate-catering.jpg"
-                alt="Corporate Conference and Seminar Catering Addis Ababa - Hiwi Catering"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                CORPORATE EVENTS
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                Elevate your next meeting or gala with Addis Ababa&apos;s trusted corporate caterer. From executive lunches to large-scale events, we deliver exceptional cuisine, seamless service, and a polished experience.
-              </p>
-              <Link
-                href="/services/showers-and-events"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                LEARN MORE
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 3: Social & Family */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/social-catering.jpg"
-                alt="Birthday Party, Graduation and Social Event Catering in Addis Ababa"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                SOCIAL CELEBRATIONS
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                We are a full-service catering company that believes events are about more than food—they&apos;re about creating a personalized experience, reflecting your style, and delighting your guests.
-              </p>
-              <Link
-                href="/services/birthday-catering"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                LEARN MORE
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. WHAT OUR CLIENTS SAY (Interactive Client Spotlight Island)            */}
+      {/* 4. CLIENT STORIES (Interactive Spotlight Island)                          */}
       {/* ========================================================================= */}
       <HomeTestimonials />
 
       {/* ========================================================================= */}
-      {/* 5. A SNEAK PEEK AT OUR MENU (3 Menu Cards)                                */}
+      {/* 5. AUTHENTIC ETHIOPIAN MENUS (Show the Actual Culinary Offerings)         */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-black">
-            A SNEAK PEEK AT OUR MENU
-          </h2>
-          <div className="w-12 h-0.5 bg-black mx-auto my-4" />
-          <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-            Exceptional menus for every season &amp; celebration. From intimate dinner parties to grand celebrations, our specialty menus can be fully customized to reflect your tastes and dietary preferences.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {/* Menu Card 1 */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/traditional-feast.jpg"
-                alt="Traditional Ethiopian Habesha Feast Catering - Doro Wat, Siga Wat and Injera"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                TRADITIONAL HABESHA FEAST
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                Authentic Doro Wat with hard-boiled eggs, tender Siga Wat, rich Kitfo, freshly seasoned Tibs, and warm hand-rolled Injera cooked with heritage Ethiopian spices.
-              </p>
-              <Link
-                href="/pricing"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                SEE PRICING &amp; MENU
-              </Link>
-            </div>
+      <section className="bg-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+              HOT HABESHA FEASTS, FASTING BEYAYNETU &amp; VIP BUFFETS
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed">
+              Every dish is prepared fresh to order with authentic Berbere, pure niter kibbeh, and soft daily-baked teff
+              Injera—tailored to your guest dietary needs.
+            </p>
           </div>
 
-          {/* Menu Card 2 */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/fasting-special.jpg"
-                alt="Ethiopian Fasting Tsom Special Catering Platter - Shiro, Misir and Vegetables"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Menu 1 */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/traditional-feast.jpg"
+                  alt="Traditional Ethiopian Habesha Feast Catering - Doro Wat, Kitfo, Derek Tibs and Injera"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  TRADITIONAL HABESHA FEAST
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Slow-simmered Doro Wat with boiled eggs, Gurage Kitfo topped with Ayib, smoky Derek Tibs, Siga Wat,
+                  and rolled teff Injera.
+                </p>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center py-3 px-6 rounded-lg bg-hiwi-dark text-white hover:bg-stone-800 text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  SEE PRICING &amp; MENU
+                </Link>
+              </div>
             </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                FASTING (TSOM) SPECIALS
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                A colorful and rich vegan spread: authentic slow-simmered Shiro Tegabino, spicy Misir Wat, Kik Alicha, braised Gomen, Fosolia, and crisp seasonal garden salads.
-              </p>
-              <Link
-                href="/pricing"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                SEE PRICING &amp; MENU
-              </Link>
-            </div>
-          </div>
 
-          {/* Menu Card 3 */}
-          <div className="flex flex-col bg-white border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100">
-              <Image
-                src="/images/vip-buffet.jpg"
-                alt="VIP Buffet and International Event Catering in Addis Ababa"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+            {/* Menu 2 */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/fasting-special.jpg"
+                  alt="Ethiopian Fasting Tsom Special Catering Platter - Shiro, Misir Wat, Kik Alicha and Beyaynetu"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  FASTING (TSOM) BEYAYNETU
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Colorful 100% plant-based spreads: gourmet Shiro Wat, Misir Wat, Kik Alicha, seasoned Gomen, Key Sir
+                  beetroot, and crisp salads.
+                </p>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center py-3 px-6 rounded-lg bg-hiwi-dark text-white hover:bg-stone-800 text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  SEE PRICING &amp; MENU
+                </Link>
+              </div>
             </div>
-            <div className="p-8 flex flex-col flex-grow text-center">
-              <h3 className="text-lg font-bold uppercase tracking-[0.15em] text-black">
-                VIP BUFFET &amp; DESSERTS
-              </h3>
-              <div className="w-8 h-0.5 bg-black mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6 flex-grow">
-                Indulgent chafing dish setups featuring roasted meats, aromatic rice pilafs, Mediterranean salads, delicate canapés, and freshly prepared artisanal desserts.
-              </p>
-              <Link
-                href="/pricing"
-                className="inline-block py-3 px-6 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-              >
-                SEE PRICING &amp; MENU
-              </Link>
+
+            {/* Menu 3 */}
+            <div className="flex flex-col bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-lg bg-hiwi-stone">
+                <Image
+                  src="/images/vip-buffet.jpg"
+                  alt="VIP Buffet and Traditional Ethiopian Buna Coffee Ceremony Setup in Addis Ababa"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow text-center">
+                <h3 className="text-lg font-extrabold uppercase tracking-tight text-hiwi-dark">
+                  VIP BUFFET &amp; BUNA CEREMONY
+                </h3>
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mt-3 mb-6 flex-grow">
+                  Dual chafing stations featuring spiced roast meats, fragrant rice pilafs, Mesob centerpieces, and live
+                  traditional Jebena coffee service.
+                </p>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center py-3 px-6 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-bold uppercase tracking-wider transition-colors shadow-warm"
+                >
+                  SEE PRICING &amp; MENU
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 5B. AEO / GEO QUICK CATERING SUMMARY (Extractable Facts & Answers)       */}
+      {/* 5B. QUICK CATERING OVERVIEW (Structured GEO / AEO Reference Grid)         */}
       {/* ========================================================================= */}
-      <section className="bg-gray-50 border-y border-gray-200 py-14 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-6">
+      <section className="bg-hiwi-stone border-y border-hiwi-border py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto space-y-8">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-hiwi-primary block mb-1.5">
-              Quick Facts • Addis Ababa &amp; Addis Abeba
-            </span>
-            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-[0.12em] text-black">
+            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
               HIWI CATERING OVERVIEW AT A GLANCE
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs sm:text-sm">
-            <div className="bg-white border border-gray-200 p-5 space-y-1.5">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="bg-white border border-hiwi-border rounded-2xl p-6 space-y-2 shadow-card">
+              <span className="text-xs font-bold uppercase tracking-wider text-hiwi-amber block">
                 Per-Guest Pricing (ETB)
               </span>
-              <p className="font-bold text-black">750 – 1,650 ETB / Guest</p>
-              <p className="text-xs text-gray-600 font-light leading-relaxed">
-                Classic Buffets (750 ETB), Royal Habesha Banquet (1,150 ETB), and Grand Wedding Majesty (1,650 ETB).
+              <p className="font-extrabold text-hiwi-dark text-base tabular-nums">
+                750 – 1,650 ETB / Guest
+              </p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                Classic Buffets (<span className="tabular-nums">750</span> ETB), Royal Habesha Banquet (
+                <span className="tabular-nums">1,150</span> ETB), and Grand Wedding Majesty (
+                <span className="tabular-nums">1,650</span> ETB).
               </p>
             </div>
-            <div className="bg-white border border-gray-200 p-5 space-y-1.5">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+
+            <div className="bg-white border border-hiwi-border rounded-2xl p-6 space-y-2 shadow-card">
+              <span className="text-xs font-bold uppercase tracking-wider text-hiwi-amber block">
                 Kitchen Location
               </span>
-              <p className="font-bold text-black">Summit Fiyel Bet (XVW2+PCH)</p>
-              <p className="text-xs text-gray-600 font-light leading-relaxed">
-                Pinned at 8.996818, 38.851122 with fast dispatch to Ayat (10–15 mins) &amp; Bole Sub-City (15–25 mins).
+              <p className="font-extrabold text-hiwi-dark text-base">
+                Summit Fiyel Bet (<code className="font-mono text-sm">XVW2+PCH</code>)
+              </p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                GPS <code className="font-mono tabular-nums text-xs">8.996818, 38.851122</code> —{' '}
+                <span className="tabular-nums">10–15</span> min to Ayat &amp;{' '}
+                <span className="tabular-nums">15–25</span> min to Bole Sub-City.
               </p>
             </div>
-            <div className="bg-white border border-gray-200 p-5 space-y-1.5">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+
+            <div className="bg-white border border-hiwi-border rounded-2xl p-6 space-y-2 shadow-card">
+              <span className="text-xs font-bold uppercase tracking-wider text-hiwi-amber block">
                 Dietary Coverage
               </span>
-              <p className="font-bold text-black">Fasting (Tsom) &amp; Non-Fasting</p>
-              <p className="text-xs text-gray-600 font-light leading-relaxed">
-                Dedicated Yetsom Beyaynetu alongside Doro Wat, Kitfo, Derek Tibs &amp; Buna ceremonies.
+              <p className="font-extrabold text-hiwi-dark text-base">
+                Fasting (Tsom) &amp; Non-Fasting
+              </p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                Dedicated vegan Yetsom Beyaynetu alongside Doro Wat, Kitfo, Derek Tibs &amp; traditional Buna ceremonies.
               </p>
             </div>
-            <div className="bg-white border border-gray-200 p-5 space-y-1.5">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">
+
+            <div className="bg-white border border-hiwi-border rounded-2xl p-6 space-y-2 shadow-card">
+              <span className="text-xs font-bold uppercase tracking-wider text-hiwi-amber block">
                 Direct Booking Line
               </span>
-              <p className="font-bold text-black">0963 138 123 / @hiwicatering</p>
-              <p className="text-xs text-gray-600 font-light leading-relaxed">
+              <p className="font-extrabold text-hiwi-dark text-base tabular-nums">
+                0963 138 123 / @hiwicatering
+              </p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed tabular-nums">
                 Open daily 7:00 AM – 10:00 PM; event buffet setups coordinated 24/7 across all 11 sub-cities.
               </p>
             </div>
@@ -423,54 +444,53 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. WHY CHOOSE HIWI CATERING (Johnny Burke 3-Pillar Dark Section)           */}
+      {/* 6. SPECIFIC HOSPITALITY PILLARS (Consistent Icon Frames, High Contrast)   */}
       {/* ========================================================================= */}
-      <section className="bg-[#1C1D21] text-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="bg-hiwi-dark text-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-white">
-              WHY CHOOSE HIWI CATERING FOR YOUR NEXT EVENT
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white text-balance">
+              BUILT FOR SEAMLESS LARGE-GROUP HOSPITALITY IN ADDIS ABABA
             </h2>
-            <div className="w-12 h-0.5 bg-white mx-auto my-4" />
-            <p className="text-xs sm:text-sm text-gray-300 uppercase tracking-widest font-light">
-              Quality is at heart of everything we do.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 text-center max-w-6xl mx-auto">
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <Sparkles className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-hiwi-gold" strokeWidth={1.75} />
               </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                Fully Customized Experiences
+              <h3 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-white">
+                Custom Fasting &amp; Meat Ratios
               </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                We don&apos;t believe in one-size-fits-all catering. Instead of offering rigid packages, we dedicate our time to understanding your vision and creating a completely unique experience tailored to you.
+              <p className="text-sm text-stone-300 leading-relaxed max-w-sm">
+                Separate vegetarian Yetsom cooklines alongside classic Habesha buffets ensure Orthodox fasting and
+                non-fasting guests are served with zero compromise.
               </p>
             </div>
 
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <Leaf className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                <Leaf className="w-6 h-6 text-hiwi-gold" strokeWidth={1.75} />
               </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                Local &amp; Sustainable Ingredients
+              <h3 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-white">
+                Daily Summit Market Sourcing
               </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                Our commitment to quality is uncompromised. We source the finest fresh organic produce, prime butchered meats, and hand-selected spices directly from trusted local farmers and markets.
+              <p className="text-sm text-stone-300 leading-relaxed max-w-sm">
+                Pure teff injera, inspected cuts, spices prepared in-house, and fresh vegetables cooked hours before
+                dispatch from our hygienic Fiyel Bet commercial kitchen.
               </p>
             </div>
 
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white mb-2">
-                <Award className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                <Award className="w-6 h-6 text-hiwi-gold" strokeWidth={1.75} />
               </div>
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white">
-                Excellence in Every Detail
+              <h3 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-white">
+                1-Hour Early Heated Setup
               </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-sm">
-                We demand excellence in everything we do — from initial menu planning and punctual delivery to training each uniformed team member. Our full-service approach ensures peace of mind.
+              <p className="text-sm text-stone-300 leading-relaxed max-w-sm">
+                Uniformed servers arrive early to ignite heavy-duty stainless chafing warmers and organize serving lines
+                before your first guests walk in.
               </p>
             </div>
           </div>
@@ -478,167 +498,207 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. SERVING ALL 11 SUB-CITIES (Linked Hyperlocal Corridor Cards)           */}
+      {/* 7. SUB-CITY COVERAGE CORRIDORS (Distinct Addis Venue Photos)              */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-black">
-            SERVING ALL 11 SUB-CITIES IN ADDIS ABABA
-          </h2>
-          <div className="w-12 h-0.5 bg-black mx-auto my-4" />
-          <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-            Whether you&apos;re hosting in Bole Sub-City, Ayat Condominium, Summit, or Kazanchis, our mobile catering crews deliver piping-hot buffets directly to your compound, hall, or office.
-          </p>
-        </div>
+      <section className="bg-white py-20 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-hiwi-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+              SERVING ALL 11 SUB-CITIES IN ADDIS ABABA &amp; ADDIS ABEBA
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed">
+              Whether your reception is in a Bole hotel ballroom, an Ayat tented compound, Summit, or Kazanchis, our
+              thermal fleet delivers piping-hot banquets directly to your table.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
-          <Link
-            href="/locations/bole"
-            className="relative h-64 sm:h-72 group overflow-hidden bg-gray-900 border border-gray-200 block"
-          >
-            <Image
-              src="/images/venue-1.jpg"
-              alt="Catering in Bole Sub-City Addis Ababa - Atlas, Medhanialem, Rwanda & Gerji"
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white text-center">
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider group-hover:text-hiwi-gold transition-colors">
-                BOLE SUB-CITY
-              </h3>
-              <p className="text-xs text-gray-300 font-light mt-1">
-                Medhanialem, Atlas, Gerji &amp; Reception Halls &rarr;
-              </p>
-            </div>
-          </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+            <Link
+              href="/locations/bole"
+              className="bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover block transition-shadow"
+            >
+              <div className="relative h-64 sm:h-72 overflow-hidden rounded-lg bg-hiwi-dark">
+                <Image
+                  src="/images/venue-1.jpg"
+                  alt="Catering in Bole Sub-City Addis Ababa - Atlas, Medhanialem, Rwanda & Gerji"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6 text-white text-center">
+                  <h3 className="text-lg font-extrabold uppercase tracking-tight group-hover:text-hiwi-gold transition-colors">
+                    BOLE SUB-CITY
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-200 mt-1">
+                    Medhanialem, Atlas, Gerji &amp; Reception Halls &rarr;
+                  </p>
+                </div>
+              </div>
+            </Link>
 
-          <Link
-            href="/locations/ayat"
-            className="relative h-64 sm:h-72 group overflow-hidden bg-gray-900 border border-gray-200 block"
-          >
-            <Image
-              src="/images/venue-2.jpg"
-              alt="Catering in Ayat, CMC and Summit Addis Ababa"
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white text-center">
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider group-hover:text-hiwi-gold transition-colors">
-                AYAT, CMC &amp; SUMMIT
-              </h3>
-              <p className="text-xs text-gray-300 font-light mt-1">
-                10–15 Min Express Compound &amp; Tent Dispatch &rarr;
-              </p>
-            </div>
-          </Link>
+            <Link
+              href="/locations/ayat"
+              className="bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover block transition-shadow"
+            >
+              <div className="relative h-64 sm:h-72 overflow-hidden rounded-lg bg-hiwi-dark">
+                <Image
+                  src="/images/venue-2.jpg"
+                  alt="Catering in Ayat, CMC and Summit Addis Ababa"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6 text-white text-center">
+                  <h3 className="text-lg font-extrabold uppercase tracking-tight group-hover:text-hiwi-gold transition-colors">
+                    AYAT, CMC &amp; SUMMIT
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-200 mt-1 tabular-nums">
+                    10–15 Min Express Compound &amp; Tent Dispatch &rarr;
+                  </p>
+                </div>
+              </div>
+            </Link>
 
-          <Link
-            href="/locations/sarbet-and-old-airport"
-            className="relative h-64 sm:h-72 group overflow-hidden bg-gray-900 border border-gray-200 block"
-          >
-            <Image
-              src="/images/venue-3.jpg"
-              alt="Catering in Old Airport, Sarbet and Kazanchis Addis Ababa"
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white text-center">
-              <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider group-hover:text-hiwi-gold transition-colors">
-                OLD AIRPORT &amp; SARBET
-              </h3>
-              <p className="text-xs text-gray-300 font-light mt-1">
-                Private Estates, Embassies &amp; Outdoor Gardens &rarr;
-              </p>
-            </div>
-          </Link>
-        </div>
+            <Link
+              href="/locations/sarbet-and-old-airport"
+              className="bg-hiwi-cream border border-hiwi-border rounded-2xl p-2 group hover:shadow-card-hover block transition-shadow"
+            >
+              <div className="relative h-64 sm:h-72 overflow-hidden rounded-lg bg-hiwi-dark">
+                <Image
+                  src="/images/venue-3.jpg"
+                  alt="Catering in Old Airport, Sarbet and Kazanchis Addis Ababa"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6 text-white text-center">
+                  <h3 className="text-lg font-extrabold uppercase tracking-tight group-hover:text-hiwi-gold transition-colors">
+                    OLD AIRPORT &amp; SARBET
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-200 mt-1">
+                    Private Estates, Embassies &amp; Outdoor Gardens &rarr;
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/locations"
-            className="inline-block py-3 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-          >
-            EXPLORE ALL DELIVERY AREAS
-          </Link>
-          <Link
-            href="/services"
-            className="inline-block py-3 px-8 border-2 border-black text-black hover:bg-black hover:text-white text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-          >
-            SEE ALL CATERING SERVICES
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/locations"
+              className="inline-flex items-center justify-center py-3.5 px-8 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-bold uppercase tracking-wider transition-colors shadow-warm"
+            >
+              EXPLORE ALL DELIVERY AREAS
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center py-3.5 px-8 rounded-lg border-2 border-hiwi-dark text-hiwi-dark hover:bg-hiwi-dark hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
+            >
+              SEE ALL CATERING SERVICES
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 8. DIRECT EVENT BOOKING / CONSULTATION FORM (Johnny Burke Center Card)    */}
+      {/* 8. DIRECT EVENT CONSULTATION FORM                                         */}
       {/* ========================================================================= */}
-      <section id="inquiry-form" className="relative py-8 sm:py-16 px-3 sm:px-6 lg:px-8 overflow-hidden">
+      <section
+        id="inquiry-form"
+        className="relative py-12 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-hiwi-dark"
+      >
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/contact-bg.jpg"
-            alt="Hiwi Catering Event Reception and Dining Atmosphere in Addis Ababa"
+            alt="Hiwi Catering Traditional Buna Coffee Ceremony and Buffet Service in Addis Ababa"
             fill
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-center opacity-35"
           />
-          <div className="absolute inset-0 bg-black/75 backdrop-blur-[1px]" />
         </div>
 
         <div className="relative z-10 max-w-xl mx-auto">
           <InquiryForm
-            title="READY TO MAKE YOUR NEXT EVENT PERFECT?"
-            subtitle="Fill out this form and we will get in touch with you within 24 hours"
+            title="GET A CUSTOM CATERING QUOTE IN 24 HOURS"
+            subtitle="Share your event date, guest count, and Addis Ababa sub-city for custom menu options and pricing."
           />
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 9. FREQUENTLY ASKED QUESTIONS (Interactive Client Island, Full DOM)      */}
+      {/* 9. FREQUENTLY ASKED QUESTIONS                                             */}
       {/* ========================================================================= */}
-      <HomeFaqSection faqs={CATERING_FAQS.slice(0, 5)} />
+      <div className="bg-white">
+        <HomeFaqSection faqs={CATERING_FAQS.slice(0, 5)} />
+      </div>
 
       {/* ========================================================================= */}
-      {/* 10. OUR GALLERY (Johnny Burke Visual Photo Grid)                          */}
+      {/* 10. CULINARY & EVENT GALLERY (6 Distinct Authentic Photographs)           */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.15em] text-black">
-            OUR GALLERY
-          </h2>
-          <div className="w-12 h-0.5 bg-black mx-auto my-4" />
-        </div>
+      <section className="bg-hiwi-cream py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2.5">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-hiwi-dark text-balance">
+              BANQUET SPREADS &amp; DISH PRESENTATION
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+              Recent Habesha platters, fasting Beyaynetu selections, Buna coffee stations, and outdoor marquee setups
+              prepared by our Summit kitchen.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-10">
-          {[
-            { src: '/images/gallery-1.jpg', alt: 'Authentic Habesha Stews and Delicacies Catering in Addis Ababa' },
-            { src: '/images/gallery-2.jpg', alt: 'Vibrant Fasting Tsom Vegetarian Platter Catering' },
-            { src: '/images/gallery-3.jpg', alt: 'Stainless Steel Chafing Dishes and Hot Buffet Catering Addis Ababa' },
-            { src: '/images/gallery-4.jpg', alt: 'Celebration Dining Table Setup for Weddings and Birthdays' },
-            { src: '/images/gallery-5.jpg', alt: 'Professional Uniformed Waitstaff and Buffet Attendants' },
-            { src: '/images/gallery-6.jpg', alt: 'Wedding Floral Table and Banquet Presentation in Addis Ababa' },
-          ].map((item, idx) => (
-            <div key={idx} className="relative h-44 sm:h-60 md:h-64 overflow-hidden bg-gray-100 group border border-gray-200">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          ))}
-        </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+            {[
+              {
+                src: '/images/gallery-1.jpg',
+                alt: 'Authentic Habesha Doro Wat, Kitfo, Derek Tibs and Injera Platter in Addis Ababa',
+              },
+              {
+                src: '/images/gallery-2.jpg',
+                alt: 'Vibrant Ethiopian Fasting Yetsom Beyaynetu Vegetarian Platter on Teff Injera',
+              },
+              {
+                src: '/images/gallery-3.jpg',
+                alt: 'Traditional Buna Coffee Ceremony and VIP Buffet Hall Setup in Addis Ababa',
+              },
+              {
+                src: '/images/gallery-4.jpg',
+                alt: 'Evening Garden Celebration Buffet with Sambusa Appetizers and Chafing Dishes',
+              },
+              {
+                src: '/images/gallery-5.jpg',
+                alt: 'Gleaming Stainless Steel Chafing Dish Reception Buffet Spread in Addis Ababa',
+              },
+              {
+                src: '/images/gallery-6.jpg',
+                alt: 'Outdoor Marquee Tent Wedding & Banquet Table Arrangement in Addis Ababa',
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-hiwi-border rounded-2xl p-1.5 group shadow-card overflow-hidden"
+              >
+                <div className="relative h-44 sm:h-60 md:h-64 overflow-hidden rounded-lg bg-hiwi-stone">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
 
-        <div className="text-center">
-          <a
-            href="#inquiry-form"
-            className="inline-block py-3 px-8 bg-black text-white hover:bg-gray-800 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
-          >
-            REQUEST YOUR EVENT MENU
-          </a>
+          <div className="text-center">
+            <a
+              href="#inquiry-form"
+              className="inline-flex items-center justify-center py-3.5 px-8 rounded-lg bg-hiwi-primary text-white hover:bg-hiwi-hover text-xs font-extrabold uppercase tracking-wider transition-colors shadow-warm"
+            >
+              REQUEST YOUR EVENT MENU
+            </a>
+          </div>
         </div>
       </section>
     </div>
