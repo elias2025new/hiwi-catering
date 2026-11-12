@@ -73,7 +73,7 @@ export default function HomePage() {
           {/* Left Column: Clear Offer & Primary CTA */}
           <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[52px] font-black uppercase tracking-tight text-hiwi-dark leading-[1.1] text-balance">
-              CATERING SERVICE IN ADDIS ABABA &amp; ABEBA FOR WEDDINGS, EVENTS &amp; PARTIES
+              CATERING SERVICE IN ADDIS ABABA FOR WEDDINGS, EVENTS &amp; PARTIES
             </h1>
 
             <p className="text-base sm:text-lg text-stone-700 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
