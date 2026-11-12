@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   Phone,
   Send,
@@ -27,6 +27,7 @@ export default function InquiryForm({
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -34,13 +35,6 @@ export default function InquiryForm({
     date: '',
     details: '',
   });
-  const submitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
-    };
-  }, []);
 
   // Custom Calendar State
   const today = new Date();
@@ -124,21 +118,55 @@ export default function InquiryForm({
     });
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
+    setSubmitError(null);
+
     if (!formData.date) {
       setDateError(true);
       setIsCalendarOpen(true);
       return;
     }
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.details.trim()) {
+      return;
+    }
 
     setIsSubmitting(true);
-    submitTimerRef.current = setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          date: formData.date,
+          details: formData.details,
+          sourceUrl: typeof window !== 'undefined' ? window.location.pathname : undefined,
+        }),
+      });
+
+      const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+
+      if (!response.ok) {
+        setSubmitError(
+          payload?.error ||
+            'Something went wrong sending your inquiry. Please try again or call 0963 138 123.'
+        );
+        return;
+      }
+
       setFormSubmitted(true);
-    }, 480);
+    } catch {
+      setSubmitError(
+        'Network error while sending your inquiry. Please check your connection or call 0963 138 123.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const telegramMessage = encodeURIComponent(
@@ -417,7 +445,16 @@ export default function InquiryForm({
             />
           </div>
 
-          <div className="pt-1">
+          <div className="pt-1 space-y-3">
+            {submitError && (
+              <div
+                role="alert"
+                className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs text-red-800 font-medium animate-feedback-in"
+              >
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-600 mt-0.5" strokeWidth={1.75} />
+                <span>{submitError}</span>
+              </div>
+            )}
             <button
               type="submit"
               disabled={isSubmitting}
